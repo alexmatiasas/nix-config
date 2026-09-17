@@ -1,8 +1,8 @@
 { ... }:
 
 {
-    imports = [
+  imports = [
     ../modules/core
     ../modules/development
-    ];
-  }
+  ];
+}
