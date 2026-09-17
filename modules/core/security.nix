@@ -1,6 +1,6 @@
 { ... }:
 
 {
-  security.sudo.wheelNeedsPassword = false;
+  security.sudo.wheelNeedsPassword = true;
   networking.firewall.enable = true;
 }
