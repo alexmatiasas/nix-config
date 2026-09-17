@@ -12,12 +12,15 @@
       nixpkgs,
       ...
     }:
+    let
+      system = "aarch64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+    in
     {
-      formatter.aarch64-linux = nixpkgs.legacyPackages.aarch64-linux.nixfmt-rfc-style;
+      # Usar nixfmt-tree corrige el comportamiento recursivo y quita los warnings
+      formatter.${system} = pkgs.nixfmt-tree;
 
       nixosConfigurations.rpi-server = nixpkgs.lib.nixosSystem {
-        system = "aarch64-linux";
-
         modules = [
           ./hosts/rpi-server
         ];
