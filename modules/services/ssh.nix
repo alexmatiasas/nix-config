@@ -5,8 +5,10 @@
     enable = true;
 
     settings = {
-      PasswordAuthentication = false;
       PermitRootLogin = "no";
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+      PubkeyAuthentication = true;
     };
   };
 }
