@@ -6,6 +6,7 @@
     zsh
     zsh-completions
     tmux
+    herdr
     bat
     btop
     htop
