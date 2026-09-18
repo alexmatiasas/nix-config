@@ -16,8 +16,6 @@
     ripgrep
     tree
     yazi
-    zoxide
-    starship
 
     # Dotfiles
     chezmoi

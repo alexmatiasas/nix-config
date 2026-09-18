@@ -1,19 +1,16 @@
 { pkgs, ... }:
 
 {
-  # Configura zsh como el shell interactivo del sistema
+  # Configure zsh as the interactive shell of the system
   programs.zsh = {
     enable = true;
     enableCompletion = true;
   };
 
-  # Instalamos las herramientas base de la shell que mencionamos en el plan
-  # Las ponemos aquí para separarlas de los "paquetes generales"
+  # Install the base tools of the shell that we mentioned, in the plan
+  # We put it here to separate them from the "general packages"
   environment.systemPackages = with pkgs; [
     starship
     atuin
     zoxide
-    fnm
-    pnpm
-  ];
 }
