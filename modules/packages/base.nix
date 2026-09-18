@@ -16,5 +16,6 @@
     p7zip
     htop
     btop
+    chezmoi
   ];
 }

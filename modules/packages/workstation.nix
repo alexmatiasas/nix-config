@@ -11,6 +11,5 @@
     tree
     yazi
     fastfetch
-    chezmoi
   ];
 }
