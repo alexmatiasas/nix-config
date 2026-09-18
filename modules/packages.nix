@@ -31,7 +31,7 @@
     # Git and workflow
     git
     git-lfs
-    git-delta
+    delta
     gh
     lazygit
     gitleaks
