@@ -6,7 +6,6 @@
     zsh
     zsh-completions
     tmux
-    herdr
     git
     curl
     wget

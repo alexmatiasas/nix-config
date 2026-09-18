@@ -11,6 +11,7 @@
     {
       self,
       nixpkgs,
+      herdr,
       ...
     }:
     let
@@ -22,6 +23,7 @@
       formatter.${system} = pkgs.nixfmt-tree;
 
       nixosConfigurations.rpi-server = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit herdr; };
         modules = [
           ./hosts/rpi-server
         ];
