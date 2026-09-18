@@ -1,6 +1,6 @@
 # hosts/laptop/default.nix
 
-{ ... }:
+_:
 
 {
   imports = [
