@@ -6,5 +6,6 @@ _:
     ./python.nix
     ./node.nix
     ./rust.nix
+    ./toolchain.nix
   ];
 }
