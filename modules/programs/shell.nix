@@ -13,4 +13,5 @@
     starship
     atuin
     zoxide
+  ];
 }
