@@ -35,6 +35,7 @@
     gh
     lazygit
     gitleaks
+    prek
 
     # General development
     neovim
