@@ -19,6 +19,9 @@
     zoxide
     starship
 
+    # Dotfiles
+    chezmoi
+
     # Files and data
     file
     jq
