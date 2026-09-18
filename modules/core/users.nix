@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+_: {
   users.users.alexmatias = {
     isNormalUser = true;
     description = "Alex Matías";
