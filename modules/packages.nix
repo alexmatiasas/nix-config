@@ -2,29 +2,43 @@
 
 {
   environment.systemPackages = with pkgs; [
-    git
-    curl
-    wget
-
-    neovim
-
+    # Shell and terminal
+    zsh
+    zsh-completions
+    tmux
     bat
     btop
+    htop
     eza
+    fastfetch
     fd
     fzf
     ripgrep
+    tree
+    yazi
+    zoxide
+    starship
 
+    # Files and data
+    file
     jq
     yq
-    tree
-    tmux
-    zoxide
+    wget
+    curl
+    unzip
+    p7zip
 
-    fastfetch
-    htop
+    # Git and workflow
+    git
+    git-lfs
+    git-delta
+    gh
     lazygit
+    gitleaks
+
+    # General development
+    neovim
     just
-    starship
+    shellcheck
   ];
 }
