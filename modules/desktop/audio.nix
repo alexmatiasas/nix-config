@@ -2,7 +2,7 @@
 
 {
   # Pipeware enabled
-  services.pipeware = {
+  services.pipewire = {
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
