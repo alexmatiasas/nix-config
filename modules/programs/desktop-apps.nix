@@ -12,20 +12,21 @@
     zettlr
     zotero
     anki
-    # notion
+    notion
 
-    # Deverolment
+    # Development
     vscode
     dbeaver-bin
     pgadmin4-desktopmode
     rstudio
-    mongodb-compass
+    # mongodb-compass # not supported for aarch64-linux
 
     # Multimedia and design
     vlc
     gimp
     inkscape
     blender
+    spotify
 
     # Comunication and others
     telegram-desktop
