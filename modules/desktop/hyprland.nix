@@ -11,7 +11,7 @@
   environment.systemPackages = with pkgs; [
     # Core & UI
     waybar
-    rofi-wayland
+    rofi
     mako
     swww
     hyprlock
