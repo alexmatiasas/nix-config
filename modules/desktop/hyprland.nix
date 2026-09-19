@@ -2,7 +2,7 @@
 
 {
   # Enable Hyprland
-  programs.hyprl = {
+  programs.hyprland = {
     enable = true;
     # Xwayland allows execute apps that do not support Wayland natively
     xwayland.enable = true;
