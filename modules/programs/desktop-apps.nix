@@ -30,7 +30,7 @@
 
     # Comunication and others
     telegram-desktop
-    whatsapp-for-mac
+    whatsapp-electron
     discord
     bitwarden-desktop
     ventoy # Substitutes balena etcher
