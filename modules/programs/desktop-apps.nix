@@ -5,7 +5,7 @@
 
     # Browsers
     google-chrome
-    brave-origin
+    brave
 
     # Productivity and notes
     obsidian
