@@ -10,7 +10,7 @@
 
   # Instalamos el escritorio Pantheon y sus componentes base
   environment.systemPackages = with pkgs; [
-    pantheon-tweak
+    pantheon-tweaks
     nautilus
   ];
 }
