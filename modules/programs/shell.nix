@@ -13,5 +13,6 @@
     starship
     atuin
     zoxide
+    uwsm
   ];
 }

@@ -25,7 +25,7 @@
     wl-clipboard
 
     # Terminal
-    ghostty
+    kitty
   ];
 
   services.dbus.enable = true;
