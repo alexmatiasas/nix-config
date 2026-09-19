@@ -18,7 +18,7 @@
     vscode
     dbeaver-bin
     pgadmin4-desktopmode
-    rstudio
+    # rstudio # there was a problem with this package, to check it out
     # mongodb-compass # not supported for aarch64-linux
 
     # Multimedia and design
