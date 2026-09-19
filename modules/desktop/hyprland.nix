@@ -13,7 +13,7 @@
     waybar
     rofi
     mako
-    swww
+    awww
     hyprlock
     hypridle
 
