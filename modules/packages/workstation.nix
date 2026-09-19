@@ -11,5 +11,11 @@
     tree
     yazi
     fastfetch
+    glow
+    duckdb
+    httpie
+    typos
+    yq
+    jq
   ];
 }
