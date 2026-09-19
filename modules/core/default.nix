@@ -1,6 +1,9 @@
 _:
 
 {
+  # Enable flatpak
+  services.flatpak.enable = true;
+
   imports = [
     ./boot.nix
     ./locale.nix
