@@ -6,6 +6,11 @@ _:
     "flakes"
   ];
 
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.allowUnsupportedSystem = true;
+  nixpkgs.config = {
+    allowUnsupportedSystem = true;
+    allowUnfree = true;
+    permittedInsecurePackages = [
+      "electron-41.9"
+    ];
+  };
 }
