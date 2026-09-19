@@ -9,14 +9,23 @@
   };
 
   environment.systemPackages = with pkgs; [
+    # Core & UI
     waybar
-    wofi
-    dunst
-    hyprpaper
-    kitty
-    swaybg
+    rofi-wayland
+    mako
+    swww
+    hyprlock
+    hypridle
+
+    # Screenshots and utils
     grim
     slurp
+    swappy
+    cliphist
+    wl-clipboard
+
+    # Terminal
+    ghostty
   ];
 
   services.dbus.enable = true;
