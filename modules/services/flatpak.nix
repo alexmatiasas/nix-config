@@ -12,19 +12,13 @@
       ExecStart = pkgs.writeShellScript "flatpak-install-script" ''
         ${pkgs.flatpak}/bin/flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
-        # Cambiamos 'app' por 'FP_APP' para evitar colisiones de PID
-        FP_APPS=(
-          "com.spotify.Client"
-          "com.discordapp.Discord"
-          "com.zoom.zoom"
-          "com.slack.Slack"
-          "com.dropbox.Dropbox"
-          "com.microsoft.Teams"
-        )
-
-        for FP_APP in "$${FP_APPS[@]}"; do
-          ${pkgs.flatpak}/bin/flatpak install -y flathub "$$FP_APP"
-        done
+        # Instalación explícita: Sin variables, sin bucles, sin errores de interpolación
+        ${pkgs.flatpak}/bin/flatpak install -y flathub com.spotify.Client
+        ${pkgs.flatpak}/bin/flatpak install -y flathub com.discordapp.Discord
+        ${pkgs.flatpak}/bin/flatpak install -y flathub com.zoom.zoom
+        ${pkgs.flatpak}/bin/flatpak install -y flathub com.slack.Slack
+        ${pkgs.flatpak}/bin/flatpak install -y flathub com.dropbox.Dropbox
+        ${pkgs.flatpak}/bin/flatpak install -y flathub com.microsoft.Teams
       '';
     };
   };
