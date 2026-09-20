@@ -11,7 +11,7 @@
   environment.systemPackages = with pkgs; [
     # Core & UI
     waybar
-    rofi
+    rofi-wayland
     mako
     awww
     hyprlock
@@ -26,6 +26,20 @@
 
     # Terminal
     kitty
+
+    # Audio
+    pamixer
+    pavucontrol
+
+    # Network
+    networkmanager-applet
+
+    # Bluetooth
+    blueman
+
+    # Weather
+    wttrbar
+
   ];
 
   services.dbus.enable = true;
