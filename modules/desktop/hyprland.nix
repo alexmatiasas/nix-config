@@ -32,7 +32,7 @@
     pavucontrol
 
     # Network
-    networkmanager-applet
+    networkmanagerapplet
 
     # Bluetooth
     blueman
