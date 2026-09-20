@@ -1,7 +1,6 @@
 { pkgs, ... }:
 
 {
-  # Enable flatpak
   services.flatpak.enable = true;
 
   systemd.services.flatpak-install-apps = {
@@ -10,12 +9,11 @@
     wantedBy = [ "multi-user.target" ];
     serviceConfig = {
       Type = "oneshot";
-      # Script que añade el repo e instala las apps de tu lista
       ExecStart = pkgs.writeShellScript "flatpak-install-script" ''
         ${pkgs.flatpak}/bin/flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
-        # Lista de apps imprescindibles (Sustituto de Brew Casks)
-        APPS=(
+        # Cambiamos 'app' por 'FP_APP' para evitar colisiones de PID
+        FP_APPS=(
           "com.spotify.Client"
           "com.discordapp.Discord"
           "com.zoom.zoom"
@@ -24,8 +22,8 @@
           "com.microsoft.Teams"
         )
 
-        for app in "$${APPS[@]}"; do
-          ${pkgs.flatpak}/bin/flatpak install -y flathub "$$app"
+        for FP_APP in "$${FP_APPS[@]}"; do
+          ${pkgs.flatpak}/bin/flatpak install -y flathub "$$FP_APP"
         done
       '';
     };
