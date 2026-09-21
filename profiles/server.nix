@@ -8,6 +8,7 @@ _:
     ../modules/programs/shell.nix
     ../modules/programs/desktop-apps.nix
     ../modules/services/ssh.nix
+    ../modules/development
     ../modules/services/tailscale.nix
     ../modules/services/backups.nix
     ../modules/services/flatpak.nix
