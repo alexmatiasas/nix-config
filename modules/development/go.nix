@@ -5,7 +5,7 @@
     go
     gopls
     gofumpt
-    goimports
+    goimports-reviser
     golangci-lint
   ];
 }
