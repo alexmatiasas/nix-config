@@ -11,7 +11,6 @@
 
   environment.systemPackages = with pkgs; [
     # Core & UI
-    xdg-desktop-portal-hyprland
     qt6.qtwayland
     qt5.qtwayland
     qt6Packages.qt6ct
