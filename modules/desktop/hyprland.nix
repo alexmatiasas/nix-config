@@ -13,6 +13,10 @@
   programs.regreet.enable = true;
   security.polkit.enable = true;
 
+  environment.sessionVariables = {
+    LIBGL_ALWAYS_SOFTWARE = "1";
+  };
+
   environment.systemPackages = with pkgs; [
     # Core & UI
     qt6.qtwayland
