@@ -6,6 +6,5 @@ _:
     ./bluetooth.nix
     ./fonts.nix
     ./hyprland.nix
-    ./pantheon.nix
   ];
 }
