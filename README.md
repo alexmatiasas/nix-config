@@ -181,11 +181,15 @@ and we then use
 
 ```bash
 git clone --depth 1 https://github.com/alexmatiasas/nix-config.git /tmp \
-cp /etc/nixos/hardware-configuration.nix /tmp/nix-config/hosts/rpi-server/
+cp /etc/nixos/hardware-configuration.nix /tmp/nix-config/hosts/rpi-server/ \
+rm /etc/nixos/configuration.nix
 nixos-rebuild switch --flake /tmp/nix-config#rpi-server
 ```
 
-or change rpi-server for the host necessary
+or change rpi-server for the host necessary. The `etc/nixos/configuration.nix`
+is removed as this is the default value for installation and as we will use
+`nix-config/` as our flake configuration, then we don't need it, another way to
+change this, is creating a soft link for `configuration.nix` to the repo.
 
 ---
 
