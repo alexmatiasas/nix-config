@@ -5,6 +5,7 @@
     # Core utils
     zsh
     zsh-completions
+    zinit
     tmux
     git
     curl
