@@ -20,7 +20,7 @@
     hypridle
     hyprpolkitagent
     greetd
-    greetd.regreet
+    regreet
 
     # Graphic interface
     waybar
