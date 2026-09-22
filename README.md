@@ -72,8 +72,6 @@ compatibility)
 
 `ext4` - again, just annotation, the real formatting comes next.
 
-512MB 100% — empieza justo donde terminó la ESP (megabyte 512) y usa todo el resto del disco (100%). Esta va a ser la partición número 2.
-
 `512MB 100%` - starts just right where the ESP partition ends (megabyte 512),
 and uses the rest of the disk (100%). This gonna be the number 2 partition.
 
@@ -84,11 +82,110 @@ mkfs.fat -F32 -n boot /dev/vda1
 mkfs.ext4 -L nixos /dev/vda2
 ```
 
-mkfs.fat -F32 -n boot /dev/vda1 — formatea la partición 1 (la ESP) como FAT32 específicamente (-F32, existen FAT12/16/32, necesitas 32). -n boot le pone una etiqueta (LABEL=boot) — esto es lo que te va a permitir referenciar la partición por nombre en vez de por ruta cruda en el siguiente paso, y es lo que NixOS usa en el hardware-configuration.nix generado para que no importe si el disco cambia de /dev/vda a /dev/sda entre reinicios.
+`mkfs.fat -F32 -N boot /dev/vda1` - formats the partition 1 (ESP tagged)
+as FAT32 specifically (-F32, we have FAT12/16/32 but here we need 32). -n boot
+gives a tag (LABEL=boot) - this is what is gonna allow to reference the
+partition by their name instead of a raw path in the next step, and this is
+what NixOS uses in the `hardware-configuration` generated, so it doesn't matter
+if the disk changes from `/dev/vda` to `/dev/sda` between reboots.
 
-mkfs.ext4 -L nixos /dev/vda2 — formatea la partición 2 con el filesystem ext4 (el estándar de Linux, robusto y bien soportado — no necesitas nada más exótico para esto). -L nixos es la misma idea, etiqueta la partición como nixos.
+`mkfs.ext4 -L nixos /dev/vda2` -formats the partition 2 with the filesystem
+ext4 (linux standard). `-L nixos` is the same idea, tags the partition as nixos.
 
-### Mount the partitions
+### Mount the partitions where nixos
+
+```bash
+mount /dev/disk/by-label/nixos /mnt
+mkdir -p /mnt/boot
+mount /dev/disk/by-label/boot /mnt/boot
+```
+
+- `mount /dev/disk/by-label/nixos /mnt` - mounts the root partition (tagged as
+  `nixos`) in `/mnt`. `/mnt` is the convention that awaits `nixos-install` - is
+  where it "believes" it is the root `/` of the new system, besides you're in a
+  live session which root is another one (the ISO itself). Use
+  `/dev/disk/by-label/nixos` instead of `/dev/vda2` directly due to legibility
+  and no matter if the order of the disks changes.
+
+- `mkdir -p /mnt/boot` - as you just mounted the partition root in `/mnt`,
+  still does not exist a directory called `/mnt/boot` inside of it - you create
+  it to have a mounting point for ESP.
+- `mount /dev/disk/by-label/boot /mnt/boot` - mounts the ESP inside the root
+  partition already mounted. The order matters: you got to mount `root` first,
+  then boot cause you're mounting inside `root`.
+
+Result: `/mnt` now is a filesystem that will represent the same as your system
+once installed - `/mnt` = `/` of the new system. All copied or installed in
+`/mnt` from here, keeps over reboot; all out of the `/mnt` dir, will be lost
+to reboot.
+
+## nixos-generate-config
+
+You now need to create a file `/mnt/etc/nixos/configuration.nix` that specifies
+the intended configuration of the system. This is because NixOS has a
+declarative configuration model: you create or edit a description of the
+desired configuration of your system, and then NixOS takes care of making it
+happen.
+
+This command accepts an optional --flake option, to also generate a flake.nix file, if you want to set up a flake-based configuration.
+
+The command nixos-generate-config can generate an initial configuration file for you:
+
+```bash
+nixos-generate-config --root /mnt
+```
+
+You should then edit /mnt/etc/nixos/configuration.nix to suit your needs:
+
+```bash
+nano /mnt/etc/nixos/configuration.nix
+```
+
+Another critical option is fileSystems, specifying the file systems that need
+to be mounted by NixOS. However, you typically don’t need to set it yourself,
+because nixos-generate-config sets it automatically in
+`/mnt/etc/nixos/hardware-configuration.nix` from your currently mounted file
+systems. (The configuration file `hardware-configuration.nix` is included from
+`configuration.nix` and will be overwritten by future invocations of
+`nixos-generate-config`; thus, you generally should not modify it.)
+Additionally, you may want to look at Hardware configuration for known-hardware
+at this point or after installation.
+
+## nix-config install
+
+Do the installation
+
+```bash
+nixos-install
+```
+
+or better, use a flake
+
+```bash
+nixos-install --flake <path/to/the/flake.nix#nixos>
+```
+
+From here, we have our system in `/mnt` or if reboot and restart the system as
+it should be, on `/`, so, we need to install the configuration of the nixos system.
+In this way, we first need to reboot and assuming that we're still in root, so
+we'll install git for a minute with nix in a self contained shell.
+
+```bash
+nix-shell -p git
+```
+
+In this way we can use git for a minute in a temporary shell, so we add our
+configuration repo and install the host that we require, in this repo, we
+have just `rpi-server` and `ruhtra` as our hosts (`ruhtra` not implemented yet),
+and we then use
+
+```bash
+git clone --depth 1 https://github.com/alexmatiasas/nix-config.git /tmp \
+cp /etc/nixos/hardware-configuration.nix /tmp/nix-config/hosts/rpi-server/
+nixos-rebuild switch --flake /tmp/nix-config#rpi-server
+```
+
+or change rpi-server for the host necessary
 
 ---
 
