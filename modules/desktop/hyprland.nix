@@ -9,6 +9,10 @@
     withUWSM = true;
   };
 
+  hardware.graphics.enable = true;
+  programs.regreet.enable = true;
+  security.polkit.enable = true;
+
   environment.systemPackages = with pkgs; [
     # Core & UI
     qt6.qtwayland
@@ -19,15 +23,12 @@
     hyprlock
     hypridle
     hyprpolkitagent
-    greetd
-    regreet
 
     # Graphic interface
     waybar
     awww
     swaynotificationcenter
     rofi
-    mako
 
     # Screenshots and utils
     grim

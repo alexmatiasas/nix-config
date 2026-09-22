@@ -2,7 +2,11 @@
   users.users.alexmatias = {
     isNormalUser = true;
     description = "Alex Matías";
-    extraGroups = [ "wheel" ];
+    extraGroups = [
+      "wheel"
+      "video"
+      "input"
+    ];
     shell = pkgs.zsh;
 
     openssh.authorizedKeys.keys = [
