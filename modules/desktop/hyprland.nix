@@ -10,7 +10,7 @@
   };
 
   hardware.graphics.enable = true;
-  # programs.regreet.enable = true;
+  programs.regreet.enable = true;
   security.polkit.enable = true;
 
   environment.sessionVariables = {
@@ -39,6 +39,8 @@
     rofimoji
     nwg-dock-hyprland
     nwg-drawer
+    nwg-look
+    kdePackages.qtstyleplugin-kvantum
 
     # Screenshots and utils
     grim
