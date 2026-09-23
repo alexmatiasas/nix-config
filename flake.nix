@@ -36,8 +36,8 @@
             programs.qylock = {
               enable = true;
               theme = "breeze"; # any directory name under themes/
-              # sddm.enable = true; # installs theme + sets it active (default)
-              # quickshell.enable = true; # adds `qylock-lock` to PATH (default)
+              sddm.enable = true; # installs theme + sets it active (default)
+              quickshell.enable = true; # adds `qylock-lock` to PATH (default)
 
               # Optional per-theme tweaks (replaces the interactive prompts):
               themeOptions = {
