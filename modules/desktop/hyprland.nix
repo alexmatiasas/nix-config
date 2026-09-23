@@ -62,6 +62,12 @@
     chafa
     papirus-folders
     catppuccin-papirus-folders
+    gum
+    hyprcursor
+    hyprdim
+    hyprdynamicmonitors
+    hyprkeys
+    hyprls
 
     # Terminal
     kitty
