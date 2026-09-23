@@ -69,7 +69,7 @@
 
     # Battery
     tlp.enable = true;
-    thermald.enable = true;
+    # thermald.enable = true; # not available in aarch64
 
     # If screen is closed, we define suspension
     logind.settings.Login.HandleLidSwitch = "suspend";
