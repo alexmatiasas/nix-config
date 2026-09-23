@@ -81,7 +81,7 @@
       settings = {
         default_session = {
           user = "greeter";
-          command = getExe' pkgs.tuigreet "tuigreet"; # you may pass `--config` here
+          command = pkgs.tuigreet "tuigreet --mock"; # you may pass `--config` here
         };
       };
     };
