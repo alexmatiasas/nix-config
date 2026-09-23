@@ -28,29 +28,29 @@
         specialArgs = { inherit herdr; };
         modules = [
           ./hosts/rpi-server
-          qylock.nixosModules.default
-          ({ pkgs, ... }: {
-            services.displayManager.sddm.enable = true;
-            services.displayManager.sddm.wayland.enable = true;
-
-            programs.qylock = {
-              enable = true;
-              theme = "dog-samurai"; # any directory name under themes/
-              sddm.enable = true; # installs theme + sets it active (default)
-              quickshell.enable = true; # adds `qylock-lock` to PATH (default)
-
-              # Optional per-theme tweaks (replaces the interactive prompts):
-              themeOptions = {
-                terraria.backgroundMode = "time"; # time | random | static
-                Genshin.backgroundMode = "time";
-                clockwork.orbital = {
-                  themeMode = "dark";
-                  enableWindup = true;
-                };
-                osu.gameMode = "game"; # menu | game
-              };
-            };
-          })
+          # qylock.nixosModules.default
+          # ({ pkgs, ... }: {
+          #   services.displayManager.sddm.enable = true;
+          #   services.displayManager.sddm.wayland.enable = true;
+          #
+          #   programs.qylock = {
+          #     enable = true;
+          #     theme = "dog-samurai"; # any directory name under themes/
+          #     sddm.enable = true; # installs theme + sets it active (default)
+          #     quickshell.enable = true; # adds `qylock-lock` to PATH (default)
+          #
+          #     # Optional per-theme tweaks (replaces the interactive prompts):
+          #     themeOptions = {
+          #       terraria.backgroundMode = "time"; # time | random | static
+          #       Genshin.backgroundMode = "time";
+          #       clockwork.orbital = {
+          #         themeMode = "dark";
+          #         enableWindup = true;
+          #       };
+          #       osu.gameMode = "game"; # menu | game
+          #     };
+          #   };
+          # })
         ];
       };
     };
