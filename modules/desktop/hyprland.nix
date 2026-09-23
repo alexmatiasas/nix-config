@@ -22,7 +22,8 @@
     qt6.qtwayland
     qt5.qtwayland
     qt6Packages.qt6ct
-    xdg-user-dirs
+    xdg-user-dirs # This is just to create the User Dirs
+    capitaine-cursors
 
     # System lock
     hyprlock
