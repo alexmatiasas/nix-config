@@ -64,5 +64,18 @@
 
   ];
 
-  services.dbus.enable = true;
+  services = {
+    dbus.enable = true;
+
+    # Battery
+    tlp.enable = true;
+    thermald.enable = true;
+
+    # If screen is closed, we define suspension
+    logind.settings.Login.HandleLidSwitch = "suspend";
+
+    # gvfs is for recycler
+    gvfs.enable = true;
+    udisks2.enable = true;
+  };
 }

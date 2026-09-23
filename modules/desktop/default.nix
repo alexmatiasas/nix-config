@@ -7,5 +7,6 @@ _:
     ./fonts.nix
     ./hyprland.nix
     ./portals.nix
+    ./firmware.nix
   ];
 }
