@@ -50,6 +50,10 @@
     cliphist
     wl-clipboard
     imv
+    freeimage
+    libjpeg_turbo
+    libwebp
+    librsvg
     brightnessctl
     thunar
     thunar-archive-plugin
