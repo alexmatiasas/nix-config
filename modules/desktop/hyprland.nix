@@ -49,11 +49,14 @@
     swappy
     cliphist
     wl-clipboard
+    imv
     brightnessctl
     thunar
     thunar-archive-plugin
     tumbler
     ffmpegthumbnailer
+    imagemagick
+    chafa
     papirus-folders
     catppuccin-papirus-folders
 
