@@ -10,7 +10,7 @@
   };
 
   hardware.graphics.enable = true;
-  programs.regreet.enable = true;
+  programs.tuigreet.enable = true;
   security.polkit.enable = true;
 
   environment.sessionVariables = {
