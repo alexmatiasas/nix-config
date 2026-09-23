@@ -7,5 +7,6 @@ _:
     ./node.nix
     ./rust.nix
     ./toolchain.nix
+    ./math.nix
   ];
 }

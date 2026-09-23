@@ -33,6 +33,7 @@
     # Graphic interface
     waybar
     awww
+    libnotify
     swaynotificationcenter
     rofi
 
