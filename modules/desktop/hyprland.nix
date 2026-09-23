@@ -37,6 +37,7 @@
     swaynotificationcenter
     rofi
     nwg-dock-hyprland
+    nwg-drawer
 
     # Screenshots and utils
     grim
