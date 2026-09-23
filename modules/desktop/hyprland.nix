@@ -36,6 +36,7 @@
     libnotify
     swaynotificationcenter
     rofi
+    rofimoji
     nwg-dock-hyprland
     nwg-drawer
 
@@ -47,6 +48,9 @@
     wl-clipboard
     brightnessctl
     thunar
+    tumbler
+    papirus-folders
+    catppuccin-papirus-folders
 
     # Terminal
     kitty
