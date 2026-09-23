@@ -81,7 +81,7 @@
       settings = {
         default_session = {
           user = "greeter";
-          command = pkgs.tuigreet "tuigreet --mock"; # you may pass `--config` here
+          command = "${lib.getExe pkgs.tuigreet} --time --cmd hyprland"; # you may pass `--config` here
         };
       };
     };
