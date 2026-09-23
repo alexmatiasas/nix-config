@@ -36,6 +36,7 @@
     libnotify
     swaynotificationcenter
     rofi
+    nwg-dock-hyprland
 
     # Screenshots and utils
     grim
