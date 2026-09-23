@@ -80,7 +80,7 @@
       enable = true;
       settings = {
         default_session = {
-          user = "greeter";
+          user = "alexmatias";
           command = "${lib.getExe pkgs.tuigreet} --time --cmd start-hyprland"; # you may pass `--config` here
         };
       };
