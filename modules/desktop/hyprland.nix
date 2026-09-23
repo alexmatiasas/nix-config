@@ -10,7 +10,7 @@
   };
 
   hardware.graphics.enable = true;
-  programs.tuigreet.enable = true;
+  # programs.regreet.enable = true;
   security.polkit.enable = true;
 
   environment.sessionVariables = {
@@ -75,6 +75,16 @@
 
   services = {
     dbus.enable = true;
+
+    greetd = {
+      enable = true;
+      settings = {
+        default_session = {
+          user = "greeter";
+          command = getExe' pkgs.tuigreet "tuigreet"; # you may pass `--config` here
+        };
+      };
+    };
 
     # Battery
     tlp.enable = true;
