@@ -50,7 +50,6 @@
     cliphist
     wl-clipboard
     imv
-    freeimage
     libjpeg_turbo
     libwebp
     librsvg
