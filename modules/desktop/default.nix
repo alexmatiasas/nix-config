@@ -8,5 +8,6 @@ _:
     ./hyprland.nix
     ./portals.nix
     ./firmware.nix
+    ./gstreamer.nix
   ];
 }
