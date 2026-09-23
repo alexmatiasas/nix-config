@@ -22,7 +22,8 @@
     qt6.qtwayland
     qt5.qtwayland
     qt6Packages.qt6ct
-    xdg-user-dirs # This is just to create the User Dirs
+    xdg-user-dirs
+    xdg-desktop-portal-gtk # This is just to create the User Dirs
     capitaine-cursors
 
     # System lock
@@ -50,7 +51,9 @@
     wl-clipboard
     brightnessctl
     thunar
+    thunar-archive-plugin
     tumbler
+    ffmpegthumbnailer
     papirus-folders
     catppuccin-papirus-folders
 
