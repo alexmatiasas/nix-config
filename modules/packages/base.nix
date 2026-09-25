@@ -26,7 +26,6 @@
     papirus-icon-theme # High-quality icons
     swww # High-perf wallpaper daemon (animated)
     mako # Minimalist notification daemon
-    rofi-wayland # App launcher
 
     # Waybar & Desktop Dependencies
     pamixer # Audio control (CLI)
