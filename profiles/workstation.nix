@@ -5,5 +5,6 @@ _:
     ../modules/core
     ../modules/services/tailscale.nix
     ../modules/development
+    noctalia.nixosModules.default
   ];
 }
