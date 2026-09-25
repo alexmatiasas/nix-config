@@ -11,6 +11,8 @@
     sql-migrate
     lazygit
     gitleaks
+    walker
+    quickshell
     git-lfs
     git-absorb
     git-town
