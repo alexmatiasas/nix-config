@@ -30,7 +30,6 @@
     # Waybar & Desktop Dependencies
     pamixer # Audio control (CLI)
     pavucontrol # Audio control (GUI)
-    network-manager-applet # Network tray icon
     blueman # Bluetooth manager
     wttrbar # Weather for Waybar
   ];
