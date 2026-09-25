@@ -21,19 +21,18 @@
 
     # Visual & Aesthetics (The "Rice" Base)
     # Compatibility: All aarch64 / x86_64
-    jetbrains-mono-nerd-font   # Primary font for Waybar/Kitty
-    font-awesome               # Icons for Waybar
-    catppuccin-gtk             # System-wide theme
-    papirus-icon-theme         # High-quality icons
-    swww                      # High-perf wallpaper daemon (animated)
-    mako                      # Minimalist notification daemon
-    rofi-wayland              # App launcher
-    
+    font-awesome # Icons for Waybar
+    catppuccin-gtk # System-wide theme
+    papirus-icon-theme # High-quality icons
+    swww # High-perf wallpaper daemon (animated)
+    mako # Minimalist notification daemon
+    rofi-wayland # App launcher
+
     # Waybar & Desktop Dependencies
-    pamixer               # Audio control (CLI)
-    pavucontrol            # Audio control (GUI)
+    pamixer # Audio control (CLI)
+    pavucontrol # Audio control (GUI)
     network-manager-applet # Network tray icon
-    blueman                # Bluetooth manager
-    wttrbar                # Weather for Waybar
+    blueman # Bluetooth manager
+    wttrbar # Weather for Waybar
   ];
 }
