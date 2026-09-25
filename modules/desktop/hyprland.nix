@@ -10,7 +10,6 @@
   };
 
   hardware.graphics.enable = true;
-  # programs.regreet.enable = true;
   security.polkit.enable = true;
 
   environment.sessionVariables = {
@@ -23,10 +22,10 @@
     qt5.qtwayland
     qt6Packages.qt6ct
     xdg-user-dirs
-    xdg-desktop-portal-gtk # This is just to create the User Dirs
+    xdg-desktop-portal-gtk
     capitaine-cursors
 
-    # System lock
+    # System lock & Idle
     hyprlock
     hypridle
     hyprpolkitagent
@@ -64,6 +63,7 @@
     catppuccin-papirus-folders
     gum
     hyprcursor
+    gnome-software
     hyprdim
     hyprdynamicmonitors
     hyprkeys
@@ -71,21 +71,6 @@
 
     # Terminal
     kitty
-
-    # Audio
-    pamixer
-    pwvucontrol
-    pavucontrol
-
-    # Network
-    networkmanagerapplet
-
-    # Bluetooth
-    blueman
-
-    # Weather
-    wttrbar
-
   ];
 
   services = {
@@ -96,19 +81,16 @@
       settings = {
         default_session = {
           user = "alexmatias";
-          command = "${lib.getExe pkgs.tuigreet} --time --cmd start-hyprland"; # you may pass `--config` here
+          command = "${lib.getExe pkgs.tuigreet} --time --cmd start-hyprland";
         };
       };
     };
 
-    # Battery
+    # Battery & Power
     tlp.enable = true;
-    # thermald.enable = true; # not available in aarch64
-
-    # If screen is closed, we define suspension
     logind.settings.Login.HandleLidSwitch = "suspend";
 
-    # gvfs is for recycler
+    # File system utilities
     gvfs.enable = true;
     udisks2.enable = true;
   };

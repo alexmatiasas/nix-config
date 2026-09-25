@@ -7,6 +7,8 @@
     just
     shellcheck
     gh
+    sql-formatter
+    sql-migrate
     lazygit
     gitleaks
     git-lfs
@@ -14,6 +16,10 @@
     git-town
     delta
     prek
+    R
+    docker
+    docker-compose
+    ollama
     commitizen
     commitlint
     pre-commit

@@ -180,9 +180,9 @@ have just `rpi-server` and `ruhtra` as our hosts (`ruhtra` not implemented yet),
 and we then use
 
 ```bash
-git clone --depth 1 https://github.com/alexmatiasas/nix-config.git /tmp \
-cp /etc/nixos/hardware-configuration.nix /tmp/nix-config/hosts/rpi-server/ \
-rm /etc/nixos/configuration.nix
+git clone --depth 1 https://github.com/alexmatiasas/nix-config.git /tmp/nix-config && \
+cp /etc/nixos/hardware-configuration.nix /tmp/nix-config/hosts/rpi-server/  &&\
+rm /etc/nixos/configuration.nix && \
 nixos-rebuild switch --flake /tmp/nix-config#rpi-server
 ```
 
