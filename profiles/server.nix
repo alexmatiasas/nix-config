@@ -2,17 +2,9 @@ _:
 
 {
   imports = [
-    ../modules/core
-    ../modules/packages
-    ../modules/programs/herdr.nix
-    ../modules/programs/shell.nix
-    ../modules/programs/desktop-apps.nix
-    ../modules/services/flatpak.nix
-    ../modules/services/ssh.nix
-    ../modules/development
+    ../modules/core/default.nix
     ../modules/services/tailscale.nix
-    ../modules/services/backups.nix
     ../modules/services/podman.nix
-    ../modules/desktop
+    ../modules/services/backups.nix
   ];
 }
