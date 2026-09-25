@@ -24,7 +24,6 @@
     font-awesome # Icons for Waybar
     catppuccin-gtk # System-wide theme
     papirus-icon-theme # High-quality icons
-    swww # High-perf wallpaper daemon (animated)
     mako # Minimalist notification daemon
 
     # Waybar & Desktop Dependencies
