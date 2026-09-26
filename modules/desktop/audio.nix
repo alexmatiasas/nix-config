@@ -12,6 +12,7 @@
 
   # Install useful tools for audio management
   environment.systemPackages = with pkgs; [
+    pamixer
     pavucontrol
     wireplumber
   ];

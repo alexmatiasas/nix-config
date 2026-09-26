@@ -10,9 +10,9 @@
   # Install the base tools of the shell that we mentioned, in the plan
   # We put it here to separate them from the "general packages"
   environment.systemPackages = with pkgs; [
+    zinit
     starship
     atuin
     zoxide
-    uwsm
   ];
 }

@@ -15,7 +15,5 @@
     duckdb
     httpie
     typos
-    yq
-    jq
   ];
 }

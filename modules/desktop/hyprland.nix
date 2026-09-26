@@ -12,10 +12,6 @@
   hardware.graphics.enable = true;
   security.polkit.enable = true;
 
-  environment.sessionVariables = {
-    LIBGL_ALWAYS_SOFTWARE = "1";
-  };
-
   environment.systemPackages = with pkgs; [
     # Core & UI
     qt6.qtwayland
@@ -32,9 +28,14 @@
 
     # Graphic interface
     waybar
+    mako
+    wttrbar
+    catppuccin-gtk
+    papirus-icon-theme
+    uwsm
+    network-manager-applet
     awww
     libnotify
-    swaynotificationcenter
     rofi
     rofimoji
     nwg-dock-hyprland
