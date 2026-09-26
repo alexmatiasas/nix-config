@@ -4,13 +4,16 @@
   # Enable Hyprland
   programs.hyprland = {
     enable = true;
-    # Xwayland allows execute apps that do not support Wayland natively
     xwayland.enable = true;
     withUWSM = true;
   };
 
   hardware.graphics.enable = true;
   security.polkit.enable = true;
+
+  environment.sessionVariables = {
+    LIBGL_ALWAYS_SOFTWARE = "1";
+  };
 
   environment.systemPackages = with pkgs; [
     # Core & UI
@@ -43,7 +46,7 @@
     nwg-look
     kdePackages.qtstyleplugin-kvantum
 
-    # Screenshots and utils
+    # Multimedia & Utils
     grim
     slurp
     swappy
@@ -74,18 +77,19 @@
     kitty
   ];
 
-  services = {
-    dbus.enable = true;
-
-    # Greetd removed: focusing on automatic login or simple TTY for stability during refactor.
-    # If you want a fancy login manager, we can integrate a GUI one later.
-
-    # Battery & Power
-    tlp.enable = true;
-    logind.settings.Login.HandleLidSwitch = "suspend";
-
-    # File system utilities
-    gvfs.enable = true;
-    udisks2.enable = true;
+  # Display Manager: SDDM for a polished, themed login experience
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
   };
+
+  services.dbus.enable = true;
+
+  # Battery & Power
+  services.tlp.enable = true;
+  services.logind.settings.Login.HandleLidSwitch = "suspend";
+
+  # File system utilities
+  services.gvfs.enable = true;
+  services.udisks2.enable = true;
 }
