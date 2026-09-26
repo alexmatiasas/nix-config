@@ -20,7 +20,7 @@
 
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/2D63-3B07";
-      # Línea modificada para evitar conflictos de UUIDs en VM
+      # Copied from rpi-server to test on the same VM; UUIDs match that disk
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
     };

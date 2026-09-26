@@ -44,7 +44,7 @@
       no lo importa. Decidir si la workstation imprime.
 - [ ] Limpiar stubs vacíos: `programs/cli.nix`, `programs/development.nix`,
       `development/containers.nix`, `services/monitoring.nix`,
-      `data-science/python.nix`, `qylock` sin usar.
+      `data-science/python.nix`. (Hecho: input `qylock` sin usar eliminado.)
 
 ## Global
 

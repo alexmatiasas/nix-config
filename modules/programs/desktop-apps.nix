@@ -9,7 +9,7 @@
 
     # Productivity and notes
     obsidian
-    zettlr
+    # zettlr  # Not available for aarch64-linux
     zotero
     anki
     notion

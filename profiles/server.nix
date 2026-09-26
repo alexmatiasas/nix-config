@@ -10,11 +10,11 @@ _:
     ../modules/services/backups.nix
   ];
 
-  # Actualización automática semanal con reboot permitido.
-  # NOTA: si el repo es privado, el sistema (root) necesita acceso:
-  #   opción A: hazlo público (tu meta declarada),
-  #   opción B: despliega una deploy-key de solo-lectura en /root/.ssh,
-  #   opción C: cambia flake a la ruta local y haz `git pull` manual antes.
+  # Weekly automatic upgrade with reboot allowed.
+  # NOTE: if the repo is private, the system (root) needs read access:
+  #   option A: make it public (your stated goal),
+  #   option B: deploy a read-only deploy key to /root/.ssh,
+  #   option C: point flake at the local path and `git pull` manually first.
   system.autoUpgrade = {
     enable = true;
     flake = "github:alexmatiasas/nix-config#rpi-server";
