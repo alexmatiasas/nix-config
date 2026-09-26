@@ -12,12 +12,11 @@
     # (NM + BT already on; this adds UPower + power-profiles-daemon.)
     recommendedServices.enable = true;
     # User systemd service so Noctalia autostarts with the Hyprland session.
+    # Default anchor is graphical-session.target, which is active in the
+    # uwsm-managed SDDM session ("Hyprland (uwsm-managed)"). Do NOT point it
+    # at hyprland-session.target: uwsm does not provide that unit, only
+    # wayland-session@hyprland.desktop.target.
     systemd.enable = true;
-    # Anchor to the uwsm-provided target, NOT graphical-session.target:
-    # SDDM offers both plain and uwsm-managed Hyprland sessions, and only
-    # the uwsm one activates hyprland-session.target. Log in via
-    # "Hyprland (uwsm-managed)" or this service never triggers.
-    systemd.target = "hyprland-session.target";
     # NOTE: visual settings (theme, wallpaper, widgets) are NOT nix options
     # here — that is the Home Manager module's job. Configure them once in
     # the Noctalia settings UI (writes ~/.config/noctalia/); consider moving
