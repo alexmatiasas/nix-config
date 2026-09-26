@@ -21,24 +21,26 @@
     let
       system = "aarch64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+
+      mkNixosSystem =
+        host:
+        nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = {
+            inherit herdr noctalia;
+          };
+          modules = [
+            ./hosts/${host}
+          ];
+        };
     in
     {
-      # Use nixfmt-tree to fix the recursive behavior and remove warnings
       formatter.${system} = pkgs.nixfmt-tree;
 
-      nixosConfigurations.rpi-server = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit herdr noctalia; };
-        modules = [
-          ./hosts/rpi-server
-        ];
-      };
-
-      nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
-        system = "aarch64-linux";
-        specialArgs = { inherit herdr noctalia; };
-        modules = [
-          ./hosts/laptop
-        ];
+      nixosConfigurations = {
+        "rpi-server" = mkNixosSystem "rpi-server";
+        laptop = mkNixosSystem "laptop";
+        "vm-gui" = mkNixosSystem "vm-gui";
       };
     };
 }
