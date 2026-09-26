@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  system.extraDependencies = with pkgs; [
+  environment.systemPackages = with pkgs; [
     lean
     numi
     numbat

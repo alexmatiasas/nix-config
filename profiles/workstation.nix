@@ -1,4 +1,4 @@
-_:
+{ noctalia, ... }:
 
 {
   imports = [

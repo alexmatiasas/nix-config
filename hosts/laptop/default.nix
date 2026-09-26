@@ -5,7 +5,7 @@ _:
 {
   imports = [
     ../../profiles/workstation.nix
-    ../../profiles/desktop.nix
+    ../../profiles/ml-workstation.nix
 
     ./hardware-configuration.nix
   ];

@@ -6,6 +6,7 @@
       "wheel"
       "video"
       "input"
+      "networkmanager"
     ];
     shell = pkgs.zsh;
 
