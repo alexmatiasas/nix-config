@@ -33,7 +33,7 @@
     catppuccin-gtk
     papirus-icon-theme
     uwsm
-    network-manager-applet
+    networkmanagerapplet
     awww
     libnotify
     rofi
