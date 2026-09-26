@@ -1,10 +1,13 @@
-{ noctalia, ... }:
+{ noctalia, pkgs, ... }:
 
 {
   imports = [ noctalia.nixosModules.default ];
 
   programs.noctalia = {
     enable = true;
+    # The flake default leaves package = null (nothing installed).
+    # Point it at the input's package or the service/binary won't exist.
+    package = noctalia.packages.${pkgs.system}.default;
     # Enables NetworkManager, Bluetooth, UPower and a power-profile service.
     # (NM + BT already on; this adds UPower + power-profiles-daemon.)
     recommendedServices.enable = true;
