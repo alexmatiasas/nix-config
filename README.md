@@ -145,3 +145,5 @@ table; the ESP flag tells UEFI firmware where the bootloader lives; labels
 | `Neither nixpkgs.hostPlatform nor nixpkgs.system has been set` | host without platform (empty hw stub) | pass `system` in flake or generate hw config |
 | `The option services.zramSwap does not exist` | wrong path | top-level `zramSwap` |
 | `flatpak-install-apps.service` failed, exit 4 | bad Flathub IDs (Slack/Dropbox/Teams don't exist there) | remove them; lines end in `\|\| true` so one bad app can't fail the switch |
+| Noctalia installed but nothing changes in Hyprland | SDDM launched the **plain** `Hyprland` session instead of `Hyprland (uwsm-managed)` — no systemd session target, user services never start | log out, pick `Hyprland (uwsm-managed)` in the SDDM session menu (it remembers), log in; verify with `systemctl --user status noctalia` |
+| `programs.noctalia` builds nothing / service missing | flake default is `package = null`; `systemd.enable` asserts non-null | set `package = noctalia.packages.${pkgs.system}.default` |
