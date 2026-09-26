@@ -46,12 +46,18 @@ Rules of thumb:
 
 ## Daily workflow
 
-Recommended: [`nh`](https://github.com/viperML/nh) with the flake pinned once:
+Recommended: [`nh`](https://github.com/viperML/nh) (installed on every host via
+`modules/programs/shell.nix`, flake pinned through `NH_FLAKE` — no setup needed):
 
 ```sh
-export NH_FLAKE="$HOME/.config/nix-config"   # put it in your shell rc (chezmoi)
-nh os switch                                 # hostname -> right nixosConfiguration
+nh os switch          # hostname -> right nixosConfiguration, activate now
+nh os boot            # activate on next reboot (safer for remote machines)
+nh clean all          # garbage-collect old generations (respects nix.gc too)
 ```
+
+Caveat: `nh` picks the config by **machine hostname**. `rpi-server` and `vm-gui`
+match their config names; the laptop's hostname is `ruhtra` while its config is
+`laptop`, so there use `nh os switch -H laptop` (or rename one to match).
 
 No `/etc/nixos` symlink: with flakes it buys nothing (you still need `--flake`),
 confuses `nixos-generate-config`, and tangles multi-host setups. `nh` (+ plain
