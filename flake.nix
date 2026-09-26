@@ -5,7 +5,9 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     herdr.url = "github:herdrdev/herdr";
-    noctalia.url = "github:noctalia-dev/noctalia";
+    # Pinned to the /cachix branch: always points at the latest commit
+    # with prebuilt binaries, so the VM never compiles Noctalia locally.
+    noctalia.url = "github:noctalia-dev/noctalia/cachix";
   };
 
   outputs =

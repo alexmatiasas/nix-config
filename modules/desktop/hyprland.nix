@@ -86,7 +86,9 @@
   services.dbus.enable = true;
 
   # Battery & Power
-  services.tlp.enable = true;
+  # tlp intentionally OFF: Noctalia recommendedServices provides
+  # power-profiles-daemon instead (see noctalia.nix); both conflict.
+  services.tlp.enable = false;
   services.logind.settings.Login.HandleLidSwitch = "suspend";
 
   # File system utilities
