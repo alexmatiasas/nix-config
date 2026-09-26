@@ -44,7 +44,9 @@
       no lo importa. Decidir si la workstation imprime.
 - [ ] Limpiar stubs vacíos: `programs/cli.nix`, `programs/development.nix`,
       `development/containers.nix`, `services/monitoring.nix`,
-      `data-science/python.nix`. (Hecho: input `qylock` sin usar eliminado.)
+      `data-science/python.nix`.
+- [x] `qylock` integrado (`modules/desktop/qylock.nix`, tema `dog-samurai`).
+      Cambiar de tema = una palabra en ese archivo.
 
 ## Global
 

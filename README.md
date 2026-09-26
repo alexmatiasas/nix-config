@@ -25,7 +25,8 @@ modules/             # the actual config, grouped by DOMAIN
   hardware/          # nvidia / raspberry-pi (empty until the hardware exists)
   services/          # ssh, tailscale, podman, flatpak, backups (kopia), autoUpgrade
   desktop/           # hyprland (+sddm, waybar, mako, rofi, dock, thunar…), audio,
-                     #   bluetooth, fonts, portals, firmware, gstreamer
+                     #   bluetooth, fonts, portals, firmware, gstreamer,
+                     #   noctalia (shell), qylock (sddm theme + quickshell lock)
   development/       # go, python (uv/ruff), node (fnm/pnpm), rust, toolchain, math
   data-science/      # cuda (empty: no NVIDIA on ARM; x86_64 GPU box only)
   packages/          # base + workstation + dev-tools package lists
