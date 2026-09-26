@@ -14,13 +14,12 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/6cafedb1-6614-4da4-9e8e-bc91e6ba8a0c";
+    { device = "/dev/disk/by-uuid/71af8c2c-3911-46c3-b6d6-842908b88ca9";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/2D63-3B07";
-      # Copied from rpi-server to test on the same VM; UUIDs match that disk
+    { device = "/dev/disk/by-uuid/293D-9E9D";
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
     };
