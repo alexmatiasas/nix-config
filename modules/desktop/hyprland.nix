@@ -77,15 +77,8 @@
   services = {
     dbus.enable = true;
 
-    greetd = {
-      enable = true;
-      settings = {
-        default_session = {
-          user = "alexmatias";
-          command = "${lib.getExe pkgs.tuigreet} --time --cmd start-hyprland";
-        };
-      };
-    };
+    # Greetd removed: focusing on automatic login or simple TTY for stability during refactor.
+    # If you want a fancy login manager, we can integrate a GUI one later.
 
     # Battery & Power
     tlp.enable = true;
