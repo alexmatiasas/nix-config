@@ -35,8 +35,10 @@
       (barra, temas, dock). _Trigger: `vm-gui` bootea a Hyprland._
 - [ ] **Identidad chezmoi**: zsh/zinit/starship, kitty, waybar V7.1a limpia,
       mako, fondo. _Trigger: base workstation estable en `vm-gui`._
-- [ ] **Inventario Flatpak**: verificar en `vm-gui` los 12 IDs de
-      `modules/services/flatpak.nix` (3 ya excluidos por no existir).
+- [x] **Inventario Flatpak**: verificado en `vm-gui` — servicio en SUCCESS,
+      12 apps + runtimes instalados, 0 unidades fallidas.
+- [ ] **Commit** de la tanda base workstation (noctalia, qylock, firefox,
+      password, README, scripts).
 - [ ] **CUDA**: `modules/data-science/cuda.nix` y `hardware/nvidia.nix`
       vacíos a propósito — en ARM no hay NVIDIA; solo importan para la
       futura caja x86_64 con GPU. _Trigger: tener ese hardware._

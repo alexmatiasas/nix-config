@@ -31,6 +31,7 @@
 
     # Graphic interface
     waybar
+    firefox # Native fallback browser (Flatpak Firefox also in inventory)
     mako
     wttrbar
     catppuccin-gtk
