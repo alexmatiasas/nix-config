@@ -8,7 +8,7 @@ desktop look) live in a separate **chezmoi** repo — this flake owns the
 ## Layout
 
 ```text
-flake.nix            # inputs (nixpkgs, herdr, noctalia) + nixosConfigurations
+flake.nix            # inputs (nixpkgs, herdr, dms, greeter, qylock) + hosts
 hosts/               # one dir per MACHINE (hardware-specific: bootloader, swap,
                      #   filesystems, hostname). Pick one and switch to it.
   rpi-server/        # home server (today: VM w/ UEFI; physical Pi needs extlinux, see TODO)
@@ -16,7 +16,7 @@ hosts/               # one dir per MACHINE (hardware-specific: bootloader, swap,
   vm-gui/            # throwaway VM to test the workstation profile
 profiles/            # one file per ROLE (what the machine DOES)
   server.nix         # headless: core + ssh + tailscale + podman + backups + autoUpgrade
-  workstation.nix    # daily driver: server-base + packages + dev stacks + desktop + noctalia
+  workstation.nix    # daily driver: base + packages + dev + desktop (hyprland+dms)
   ml-workstation.nix # reserved for the future GPU compute box
 modules/             # the actual config, grouped by DOMAIN
   core/              # locale, networking, nix (GC/flakes), security, users
@@ -24,9 +24,10 @@ modules/             # the actual config, grouped by DOMAIN
   core/swap.nix      # 4 GiB swapfile (laptop/VM only; server uses zram)
   hardware/          # nvidia / raspberry-pi (empty until the hardware exists)
   services/          # ssh, tailscale, podman, flatpak, backups (kopia), autoUpgrade
-  desktop/           # hyprland (+sddm, waybar, mako, rofi, dock, thunar…), audio,
-                     #   bluetooth, fonts, portals, firmware, gstreamer,
-                     #   noctalia (shell), qylock (sddm theme + quickshell lock)
+  desktop/           # hyprland (+firefox, thunar, portals…), audio, bluetooth,
+                     #   fonts, firmware, gstreamer, dms (shell), dms-greeter
+                     #   (login), plasma.nix (COMMENTED fallback), qylock.nix
+                     #   (COMMENTED fallback login)
   development/       # go, python (uv/ruff), node (fnm/pnpm), rust, toolchain, math
   data-science/      # cuda (empty: no NVIDIA on ARM; x86_64 GPU box only)
   packages/          # base + workstation + dev-tools package lists
@@ -145,5 +146,5 @@ table; the ESP flag tells UEFI firmware where the bootloader lives; labels
 | `Neither nixpkgs.hostPlatform nor nixpkgs.system has been set` | host without platform (empty hw stub) | pass `system` in flake or generate hw config |
 | `The option services.zramSwap does not exist` | wrong path | top-level `zramSwap` |
 | `flatpak-install-apps.service` failed, exit 4 | bad Flathub IDs (Slack/Dropbox/Teams don't exist there) | remove them; lines end in `\|\| true` so one bad app can't fail the switch |
-| Noctalia installed but nothing changes in Hyprland | SDDM launched the **plain** `Hyprland` session instead of `Hyprland (uwsm-managed)` — no systemd session target, user services never start | log out, pick `Hyprland (uwsm-managed)` in the SDDM session menu (it remembers), log in; verify with `systemctl --user status noctalia` |
-| `programs.noctalia` builds nothing / service missing | flake default is `package = null`; `systemd.enable` asserts non-null | set `package = noctalia.packages.${pkgs.system}.default` |
+| Shell (dms/noctalia) installed but nothing changes in Hyprland | login went through the **plain** `Hyprland` session instead of `Hyprland (uwsm-managed)` — no systemd session target, user services never start (greetd-based logins don't have this problem) | pick the uwsm-managed session in the session menu (it remembers), log in; verify with `systemctl --user status <shell>` |
+| `programs.<shell>` builds nothing / service missing | flake default may be `package = null` with `systemd.enable` asserting non-null | set `package` explicitly from the input, e.g. `noctalia.packages.${pkgs.system}.default` |

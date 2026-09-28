@@ -31,13 +31,20 @@
       importa): clasificar por app → nixpkgs aarch64 OK / solo x86_64 /
       mover a Flatpak. Candidatos a Flatpak: Zettlr, Spotify, Discord,
       Zoom, Obsidian. _Trigger: VM `vm-gui` levantada._
-- [ ] **Pulido Noctalia**: partir de su default e ir sobreescribiendo
-      (barra, temas, dock). _Trigger: `vm-gui` bootea a Hyprland._
+- [x] Shell: Noctalia evaluado y reemplazado por DankMaterialShell
+      (`modules/desktop/dms.nix` + `dms-greeter.nix`). Stack pre-DMS
+      (waybar/mako/rofi/dock/hyprlock) comentado como fallback en
+      `hyprland.nix`. Walker queda instalado (dev-tools) como launcher
+      agnóstico al DE.
+- [ ] Probar `dms-greeter` en `vm-gui` (reemplaza SDDM; si falla, volver a
+      SDDM+qylock descomentando 2 bloques).
+- [ ] Pulido DMS: tema, barra, dock desde su Settings (config en
+      `~/.config/DankMaterialShell/`, versionar en chezmoi cuando guste).
 - [ ] **Identidad chezmoi**: zsh/zinit/starship, kitty, waybar V7.1a limpia,
       mako, fondo. _Trigger: base workstation estable en `vm-gui`._
 - [x] **Inventario Flatpak**: verificado en `vm-gui` — servicio en SUCCESS,
       12 apps + runtimes instalados, 0 unidades fallidas.
-- [ ] **Commit** de la tanda base workstation (noctalia, qylock, firefox,
+- [ ] **Commit** de la tanda base workstation (dms, greeter, firefox,
       password, README, scripts).
 - [ ] **CUDA**: `modules/data-science/cuda.nix` y `hardware/nvidia.nix`
       vacíos a propósito — en ARM no hay NVIDIA; solo importan para la
@@ -47,8 +54,9 @@
 - [ ] Limpiar stubs vacíos: `programs/cli.nix`, `programs/development.nix`,
       `development/containers.nix`, `services/monitoring.nix`,
       `data-science/python.nix`.
-- [x] `qylock` integrado (`modules/desktop/qylock.nix`, tema `dog-samurai`).
-      Cambiar de tema = una palabra en ese archivo.
+- [x] `qylock` como fallback comentado (`default.nix` + bloque SDDM).
+      Tema `dog-samurai` listo si se reactiva.
+- [x] `plasma.nix` escrito y validado, import comentado (fallback ~2GB).
 
 ## Global
 

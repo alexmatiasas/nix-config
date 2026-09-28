@@ -1,5 +1,5 @@
 # hosts/vm-gui/default.nix
-# VM test for workstation profile (GUI + Hyprland + Noctalia).
+# VM test for workstation profile (GUI + Hyprland + DMS).
 # Keep hosts/laptop clean for future real hardware.
 
 { modulesPath, ... }:
