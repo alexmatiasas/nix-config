@@ -20,7 +20,6 @@ let
     "io.github.jeffshee.Hidamari"
     "org.kde.okular"
     "com.calibre_ebook.calibre"
-    "org.mozilla.firefox"
     "com.getpostman.Postman"
   ];
 in

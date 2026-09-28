@@ -24,9 +24,10 @@ modules/             # the actual config, grouped by DOMAIN
   core/swap.nix      # 4 GiB swapfile (laptop/VM only; server uses zram)
   hardware/          # nvidia / raspberry-pi (empty until the hardware exists)
   services/          # ssh, tailscale, podman, flatpak, backups (kopia), autoUpgrade
-  desktop/           # hyprland (+firefox, thunar, portals…), audio, bluetooth,
-                     #   fonts, firmware, gstreamer, dms (shell), dms-greeter
-                     #   (login), plasma.nix (COMMENTED fallback), qylock.nix
+  desktop/           # hyprland + niri (trial), firefox, thunar, portals…,
+                     #   audio, bluetooth, fonts, firmware, gstreamer,
+                     #   dms (shell), dms-greeter (login),
+                     #   plasma.nix (COMMENTED fallback), qylock.nix
                      #   (COMMENTED fallback login)
   development/       # go, python (uv/ruff), node (fnm/pnpm), rust, toolchain, math
   data-science/      # cuda (empty: no NVIDIA on ARM; x86_64 GPU box only)

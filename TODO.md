@@ -38,6 +38,9 @@
       agnóstico al DE.
 - [ ] Probar `dms-greeter` en `vm-gui` (reemplaza SDDM; si falla, volver a
       SDDM+qylock descomentando 2 bloques).
+- [ ] Trial niri vs Hyprland (una semana de uso real, elegir sesión al login).
+      Niri: config KDL en `~/.config/niri/config.kdl` (chezmoi cuando guste);
+      guía de compositor en docs de DMS. Si gana niri, Hyprland pasa a fallback.
 - [ ] Pulido DMS: tema, barra, dock desde su Settings (config en
       `~/.config/DankMaterialShell/`, versionar en chezmoi cuando guste).
 - [ ] **Identidad chezmoi**: zsh/zinit/starship, kitty, waybar V7.1a limpia,

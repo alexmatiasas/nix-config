@@ -6,6 +6,7 @@ _:
     ./bluetooth.nix
     ./fonts.nix
     ./hyprland.nix
+    ./niri.nix
     ./dms.nix
     ./dms-greeter.nix
     # FALLBACK login (SDDM + qylock theme): kept working, commented out.
