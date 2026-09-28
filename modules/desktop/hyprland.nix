@@ -36,7 +36,7 @@
     # The pre-DMS stack below is commented out as fallback: uncomment if DMS
     # breaks and you need a working bar/notifications/launcher immediately.
     # waybar
-    firefox # Native fallback browser (Flatpak Firefox also in inventory)
+    # firefox # Native fallback browser (Flatpak Firefox also in inventory)
     # mako
     # wttrbar # waybar weather backend; useless without waybar
     catppuccin-gtk
