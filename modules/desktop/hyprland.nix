@@ -25,27 +25,32 @@
     capitaine-cursors
 
     # System lock & Idle
-    hyprlock
-    hypridle
+    # DMS owns lock screen + idle management. Kept commented as fallback:
+    # uncomment if DMS ever breaks and you need to lock the session.
+    # hyprlock
+    # hypridle
     hyprpolkitagent
 
     # Graphic interface
-    waybar
+    # DMS owns the shell (bar, notifications, launcher, wallpaper, dock).
+    # The pre-DMS stack below is commented out as fallback: uncomment if DMS
+    # breaks and you need a working bar/notifications/launcher immediately.
+    # waybar
     firefox # Native fallback browser (Flatpak Firefox also in inventory)
-    mako
-    wttrbar
+    # mako
+    # wttrbar # waybar weather backend; useless without waybar
     catppuccin-gtk
     papirus-icon-theme
     uwsm
     networkmanagerapplet
-    awww
+    # awww # wallpaper daemon; DMS manages wallpaper now
     libnotify
-    rofi
-    rofimoji
-    nwg-dock-hyprland
-    nwg-drawer
+    # rofi # DMS launcher replaces it; walker (dev-tools) is the DE-agnostic fallback
+    # rofimoji
+    # nwg-dock-hyprland
+    # nwg-drawer
     nwg-look
-    nwg-displays
+    # nwg-displays
     kdePackages.qtstyleplugin-kvantum
 
     # Multimedia & Utils
@@ -79,17 +84,20 @@
     kitty
   ];
 
-  # Display Manager: SDDM for a polished, themed login experience
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
-  };
+  # FALLBACK display manager (SDDM + qylock theme): commented out while
+  # dank-greeter is tried. Re-enable together with ./qylock.nix if the
+  # greeter fails; disable dms-greeter.nix at the same time (they fight
+  # over the login seat).
+  # services.displayManager.sddm = {
+  #   enable = true;
+  #   wayland.enable = true;
+  # };
 
   services.dbus.enable = true;
 
   # Battery & Power
-  # tlp intentionally OFF: Noctalia recommendedServices provides
-  # power-profiles-daemon instead (see noctalia.nix); both conflict.
+  # tlp intentionally OFF: the DMS module enables power-profiles-daemon
+  # instead (see dms.nix); both managers fight over the same hardware.
   services.tlp.enable = false;
   services.logind.settings.Login.HandleLidSwitch = "suspend";
 

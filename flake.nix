@@ -5,9 +5,12 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     herdr.url = "github:herdrdev/herdr";
-    # Pinned to the /cachix branch: always points at the latest commit
-    # with prebuilt binaries, so the VM never compiles Noctalia locally.
-    noctalia.url = "github:noctalia-dev/noctalia/cachix";
+    dms.url = "github:AvengeMedia/DankMaterialShell";
+    # DMS builds against our nixpkgs by design (mkModuleWithDmsPkgs takes
+    # downstream pkgs), so a single nixpkgs covers the whole closure.
+    dms.inputs.nixpkgs.follows = "nixpkgs";
+    # Input name is free (repo has a dash): dmsGreeter is a valid identifier.
+    dmsGreeter.url = "github:AvengeMedia/dank-greeter";
     qylock.url = "github:Darkkal44/qylock";
     # Single nixpkgs for the whole closure: our 26.05 already ships
     # quickshell, so qylock doesn't need its pinned unstable.
@@ -19,7 +22,8 @@
       self,
       nixpkgs,
       herdr,
-      noctalia,
+      dms,
+      dmsGreeter,
       qylock,
       ...
     }:
@@ -32,7 +36,7 @@
         nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = {
-            inherit herdr noctalia qylock;
+            inherit herdr dms dmsGreeter qylock;
           };
           modules = [
             ./hosts/${host}
