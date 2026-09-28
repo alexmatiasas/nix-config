@@ -7,9 +7,13 @@
     enable = true;
     # Package defaults to dms-shell built from source against our nixpkgs
     # (no null-trap like noctalia had). First switch compiles Go: slow once.
-    systemd.enable = true;
-    # Default anchor is graphical-session.target, proven active in the
-    # uwsm-managed SDDM... now greetd session. Revisit if DMS doesn't start.
+    # Autostart is NOT via systemd here: greetd-launched sessions don't
+    # guarantee graphical-session.target (proven: only the uwsm-managed SDDM
+    # session activated it). Instead autostart deterministically from Hyprland:
+    #   exec-once = dms run --session
+    # (one mechanism only: enabling systemd.enable alongside exec-once would
+    # launch two instances).
+    systemd.enable = false;
     # Feature widgets below pull their runtime deps automatically.
     enableSystemMonitoring = true;
     enableVPN = true;
