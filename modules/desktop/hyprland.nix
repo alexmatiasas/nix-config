@@ -45,6 +45,7 @@
     nwg-dock-hyprland
     nwg-drawer
     nwg-look
+    nwg-displays
     kdePackages.qtstyleplugin-kvantum
 
     # Multimedia & Utils
