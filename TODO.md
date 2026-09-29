@@ -27,6 +27,12 @@
 
 ## Workstation (`laptop` / `vm-gui` / `profiles/workstation.nix`)
 
+- [ ] **Flatpak lento en VM aarch64 (open)**: todo flatpak tarda 30-180s en
+      arrancar (5M `readlinkat` en loop, 92% del tiempo; nativo = 0.5s).
+      Evidencia en `/tmp/calc.strace`. Propietarias x86 (Zoom/Teams/Spotify/
+      Discord) no existen para ARM de todos modos -> web apps en Firefox
+      nativo. Revisitar en x86_64 si reproduce ahí.
+
 - [ ] **Triage `modules/programs/desktop-apps.nix`** (huérfano, nadie lo
       importa): clasificar por app → nixpkgs aarch64 OK / solo x86_64 /
       mover a Flatpak. Candidatos a Flatpak: Zettlr, Spotify, Discord,

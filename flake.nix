@@ -5,6 +5,9 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     herdr.url = "github:herdrdev/herdr";
+    # Pinned stable (not main): declarative flatpak manager with
+    # uninstall-on-remove (true single source of truth).
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.7.0";
     dms.url = "github:AvengeMedia/DankMaterialShell";
     # DMS builds against our nixpkgs by design (mkModuleWithDmsPkgs takes
     # downstream pkgs), so a single nixpkgs covers the whole closure.
@@ -22,6 +25,7 @@
       self,
       nixpkgs,
       herdr,
+      nix-flatpak,
       dms,
       dmsGreeter,
       qylock,
@@ -36,7 +40,7 @@
         nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = {
-            inherit herdr dms dmsGreeter qylock;
+            inherit herdr nix-flatpak dms dmsGreeter qylock;
           };
           modules = [
             ./hosts/${host}

@@ -11,12 +11,14 @@ let
   # Excluded entirely (don't exist on Flathub at all): com.slack.Slack
   # (withdrawn), com.dropbox.Dropbox (never official), com.microsoft.Teams
   # (discontinued on Linux), com.zoom.Zoom (wrong ID; real one is us.zoom.Zoom).
+  # Single source of truth per app: if it lives in nixpkgs (see
+  # modules/packages/gui-apps.nix), it does NOT live here, and vice versa.
+  # Native proven ~0.5s startup vs 30-180s sandboxed on this VM.
   flatpakAppsCommon = [
     "org.localsend.localsend_app"
     "io.github.jeffshee.Hidamari"
     "org.kde.okular"
     "com.calibre_ebook.calibre"
-    "org.mozilla.firefox"
     "com.getpostman.Postman"
   ];
 
@@ -55,6 +57,11 @@ in
     # as FLATPAK-FAILED in the journal without failing the whole switch.
     + lib.concatMapStrings (
       app: "        ${pkgs.flatpak}/bin/flatpak install -y flathub ${app} || echo \"FLATPAK-FAILED: ${app}\"\n"
-    ) flatpakApps;
+    ) flatpakApps
+    # Keep installed apps current on every boot (install -y alone skips
+    # what's already installed, freezing versions forever).
+    + ''
+      ${pkgs.flatpak}/bin/flatpak update -y || echo "FLATPAK-UPDATE-FAILED"
+    '';
   };
 }
