@@ -14,6 +14,9 @@
   environment.sessionVariables = {
     LIBGL_ALWAYS_SOFTWARE = "1";
   };
+  systemd.user.extraConfig = ''
+    DefaultEnvironment="WAYLAND_DISPLAY=wayland-1" "XDG_CURRENT_DESKTOP=Hyprland" "XDG_SESSION_TYPE=wayland"
+  '';
 
   environment.systemPackages = with pkgs; [
     # Core & UI
@@ -36,9 +39,10 @@
     # The pre-DMS stack below is commented out as fallback: uncomment if DMS
     # breaks and you need a working bar/notifications/launcher immediately.
     # waybar
-    firefox # Native browser: starts far faster than the Flatpak (cold-start
-            # cost + sandbox overhead measured in minutes on this VM).
-            # Flatpak Firefox stays in inventory as backup.
+    firefox
+    # Native browser: starts far faster than the Flatpak (cold-start
+    # cost + sandbox overhead measured in minutes on this VM).
+    # Flatpak Firefox stays in inventory as backup.
     # mako
     # wttrbar # waybar weather backend; useless without waybar
     catppuccin-gtk
