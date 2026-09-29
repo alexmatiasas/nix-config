@@ -44,7 +44,13 @@
         nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = {
-            inherit herdr nix-flatpak dms dmsGreeter qylock;
+            inherit
+              herdr
+              nix-flatpak
+              dms
+              dmsGreeter
+              qylock
+              ;
           };
           modules = [
             ./hosts/${host}
