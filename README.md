@@ -121,9 +121,9 @@ table; the ESP flag tells UEFI firmware where the bootloader lives; labels
   Needs repo access for root — see the NOTE in `profiles/server.nix`.
 - **Backups**: `kopia` binary installed; repo + schedule are TODOs gated on the
   USB disk (see TODO.md). No restore tested = no backup.
-- **Flatpaks** (workstation only): `services.flatpak.enable` + an install service
-  generated from a Nix list (`modules/services/flatpak.nix`). IDs that don't
-  exist on Flathub are excluded with a comment saying why.
+- **Flatpaks** (workstation only): managed by `nix-flatpak` (`modules/services/flatpak.nix`)
+  from an arch-verified inventory — removing an ID uninstalls it, updates run
+  on activation. Manual installs are left alone (`uninstallUnmanaged` off).
 - **Ghostty over SSH**: macOS Ghostty sets `TERM=xterm-ghostty`, unknown to the
   remote terminfo DB (broken colors/keys). Run once per host:
 

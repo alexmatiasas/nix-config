@@ -51,8 +51,12 @@
       `~/.config/DankMaterialShell/`, versionar en chezmoi cuando guste).
 - [ ] **Identidad chezmoi**: zsh/zinit/starship, kitty, waybar V7.1a limpia,
       mako, fondo. _Trigger: base workstation estable en `vm-gui`._
-- [x] **Inventario Flatpak**: verificado en `vm-gui` — servicio en SUCCESS,
-      12 apps + runtimes instalados, 0 unidades fallidas.
+- [x] Flatpak vía `nix-flatpak` v0.7.0 (uninstall-on-remove = single source
+      real). Inventario gateado por arquitectura; updates en activación.
+- [ ] Experimento Zoom x86_64 emulado (binfmt ya en `vm-gui`): instalar manual
+      y probar usabilidad. Si sirve, se declara; si no, queda documentado.
+- [ ] Lote 1 natives (`gui-apps.nix`: thunderbird + obs-studio) pendiente de
+      `dry-build` en VM; al pasar, salen de la lista x86 de flatpak (fase 2).
 - [ ] **Commit** de la tanda base workstation (dms, greeter, firefox,
       password, README, scripts).
 - [ ] **CUDA**: `modules/data-science/cuda.nix` y `hardware/nvidia.nix`
