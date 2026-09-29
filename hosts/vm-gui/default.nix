@@ -25,6 +25,12 @@
   # Reliable text path: SSH from Ghostty (scrollback copy just works).
   services.spice-vdagentd.enable = true;
 
+  # EXPERIMENT: run x86_64 binaries (incl. x86_64 flatpaks) on this ARM VM
+  # via qemu-user transparent emulation (binfmt_misc). Needed for trying
+  # proprietary x86-only flatpaks (Zoom/Spotify/Discord) where no ARM build
+  # exists. Slow by nature; promote to other hosts only if usable.
+  boot.binfmt.emulatedSystems = [ "x86_64-linux" ];
+
   # Software rendering: the VM has no GPU.
   environment.sessionVariables = {
     LIBGL_ALWAYS_SOFTWARE = "1";

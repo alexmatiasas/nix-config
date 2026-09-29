@@ -1,19 +1,21 @@
-{ pkgs, lib, ... }:
+{ nix-flatpak, lib, pkgs, ... }:
 
 let
-  # Inventory of Flatpak apps, verified against Flathub's arch metadata
-  # (bundle: app/<id>/<arch>/stable) on 2026-09-28.
+  # Flatpak inventory, verified against Flathub's arch metadata
+  # (bundle: app/<id>/<arch>/stable).
   #
   # Two tiers: universal apps install everywhere; x86_64-only apps are gated
   # by hostPlatform so the same config works on ARM VMs and the future
   # x86_64 laptop without manual triage per machine.
   #
+  # Single source of truth per app: if it lives in nixpkgs
+  # (see modules/packages/gui-apps.nix), it does NOT live here, and vice
+  # versa. Removing an ID from these lists UNINSTALLS it (nix-flatpak
+  # convergent management) — unlike the old hand-rolled install service.
+  #
   # Excluded entirely (don't exist on Flathub at all): com.slack.Slack
   # (withdrawn), com.dropbox.Dropbox (never official), com.microsoft.Teams
   # (discontinued on Linux), com.zoom.Zoom (wrong ID; real one is us.zoom.Zoom).
-  # Single source of truth per app: if it lives in nixpkgs (see
-  # modules/packages/gui-apps.nix), it does NOT live here, and vice versa.
-  # Native proven ~0.5s startup vs 30-180s sandboxed on this VM.
   flatpakAppsCommon = [
     "org.localsend.localsend_app"
     "io.github.jeffshee.Hidamari"
@@ -23,9 +25,15 @@ let
   ];
 
   # Verified x86_64-only on Flathub. ARM alternatives:
-  # - OBS Studio -> pkgs.obs-studio (native, aarch64 OK)
-  # - Thunderbird -> pkgs.thunderbird (native, aarch64 OK)
-  # - Spotify / Discord / Zoom / Bottles -> no ARM build; use web apps
+  # - OBS Studio -> pkgs.obs-studio (native, in gui-apps.nix)
+  # - Thunderbird -> pkgs.thunderbird (native, in gui-apps.nix)
+  # - Spotify / Discord / Zoom / Bottles -> no ARM build; web apps on ARM,
+  #   and on x86_64 either these flatpaks or the WARNING below about emulation.
+  # EXPERIMENT (not declared here): x86_64 flatpaks on ARM via qemu-user
+  # binfmt (see vm-gui host). Manual only:
+  #   sudo flatpak install --arch=x86_64 flathub us.zoom.Zoom
+  # Keep them OUT of this list until proven usable (a failing ref would retry
+  # forever via restartOnFailure).
   flatpakAppsX86 = [
     "com.spotify.Client"
     "com.discordapp.Discord"
@@ -40,28 +48,16 @@ let
     ++ lib.optionals pkgs.stdenv.hostPlatform.isx86_64 flatpakAppsX86;
 in
 {
-  services.flatpak.enable = true;
+  imports = [ nix-flatpak.nixosModules.nix-flatpak ];
 
-  systemd.services.flatpak-install-apps = {
-    description = "Install essential Flatpak applications";
-    wants = [ "network-online.target" ];
-    after = [ "network-online.target" ];
-    wantedBy = [ "multi-user.target" ];
-    serviceConfig = {
-      Type = "oneshot";
-    };
-    script = ''
-      ${pkgs.flatpak}/bin/flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-    ''
-    # Failures are ECHOED, not swallowed: a missing/arch-mismatched app shows
-    # as FLATPAK-FAILED in the journal without failing the whole switch.
-    + lib.concatMapStrings (
-      app: "        ${pkgs.flatpak}/bin/flatpak install -y flathub ${app} || echo \"FLATPAK-FAILED: ${app}\"\n"
-    ) flatpakApps
-    # Keep installed apps current on every boot (install -y alone skips
-    # what's already installed, freezing versions forever).
-    + ''
-      ${pkgs.flatpak}/bin/flatpak update -y || echo "FLATPAK-UPDATE-FAILED"
-    '';
+  services.flatpak = {
+    enable = true;
+    packages = flatpakApps;
+    # Update everything on activation (every switch/boot): install-only
+    # freezes versions forever. Retry-with-backoff on flaky networks is
+    # built in (restartOnFailure defaults).
+    update.onActivation = true;
+    # Only declared refs are managed; manual installs (e.g. the x86_64
+    # emulation experiment) are left alone. uninstallUnmanaged stays false.
   };
 }
