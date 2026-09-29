@@ -14,4 +14,5 @@
     # Without it their Quickshell scenes can render broken/blank.
     material-symbols
   ];
+  fonts.fontDir.enable = true;
 }
