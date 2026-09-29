@@ -17,6 +17,14 @@
 
   networking.hostName = "vm-gui";
 
+  # SPICE agent (UTM/QEMU only — never on real hardware): seamless mouse
+  # grab/release with the Mac host. Clipboard sharing also requires
+  # "Sharing -> Share Clipboard" enabled in the UTM VM settings, and even
+  # then it only covers X11/XWayland apps — wlroots Wayland compositors
+  # (Hyprland/niri) don't implement the vdagent clipboard protocol.
+  # Reliable text path: SSH from Ghostty (scrollback copy just works).
+  services.spice-vdagentd.enable = true;
+
   # Software rendering: the VM has no GPU.
   environment.sessionVariables = {
     LIBGL_ALWAYS_SOFTWARE = "1";
