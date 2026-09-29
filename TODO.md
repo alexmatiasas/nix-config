@@ -27,12 +27,11 @@
 
 ## Workstation (`laptop` / `vm-gui` / `profiles/workstation.nix`)
 
-- [x] **Flatpak lento en VM (CERRADO como decisión, no como fix)**: tras ~15
-      rondas forenses (strace/ltrace/dbus/portales/recursos) el loop
-      `readlinkat`→`EINVAL` en el proceso `flatpak` quedó sin causa nombrada.
-      Decisión: nixpkgs-first para dailies (0.5s probado), flatpak mínimo
-      viable, propietarias según plataforma (abajo). Si alguien lo retoma:
-      evidencia en issue/tabla troubleshooting del README.
+- [x] **Flatpak lento en VM (RESUELTO y VERIFICADO)**: el parche NixOS de
+      flatpak recorre iconos/fuentes del sistema resolviendo symlinks cuando
+      no hay rutas FHS; miles de iconos Papirus sueltos = minutos. Fix:
+      temas de iconos en `users.users.<name>.packages`, jamás en sistema.
+      Verificado: calculadora 111s -> 0.49s. Sonda manual ya desinstalada.
 
 - [ ] **Triage `modules/programs/desktop-apps.nix`** (huérfano, nadie lo
       importa): clasificar por app → nixpkgs aarch64 OK / solo x86_64 /
