@@ -27,13 +27,12 @@
 
 ## Workstation (`laptop` / `vm-gui` / `profiles/workstation.nix`)
 
-- [ ] **Flatpak lento en VM (ABIERTO)**: podar el duplicado Papirus NO lo
-      arregló. Evidencia acumulada: loop `readlinkat`+`newfstatat` en el
-      proceso `flatpak` sobre icon trees; portales sanos; env sano; recursos
-      sanos; nativo 0.5s. Siguiente: re-medir el storm tras la poda
-      (`strace -c`) para ver si cambió de forma; si idéntico, el driver está
-      en otro lado (candidatos: PackageKit ya removido, `gnome-software`
-      removido, queda revisar `tumbler`/thumbnailers y el FUSE portal).
+- [x] **Flatpak lento en VM (CERRADO como decisión, no como fix)**: tras ~15
+      rondas forenses (strace/ltrace/dbus/portales/recursos) el loop
+      `readlinkat`→`EINVAL` en el proceso `flatpak` quedó sin causa nombrada.
+      Decisión: nixpkgs-first para dailies (0.5s probado), flatpak mínimo
+      viable, propietarias según plataforma (abajo). Si alguien lo retoma:
+      evidencia en issue/tabla troubleshooting del README.
 
 - [ ] **Triage `modules/programs/desktop-apps.nix`** (huérfano, nadie lo
       importa): clasificar por app → nixpkgs aarch64 OK / solo x86_64 /

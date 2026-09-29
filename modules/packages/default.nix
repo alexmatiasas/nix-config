@@ -5,6 +5,5 @@
     ./base.nix
     ./workstation.nix
     ./dev-tools.nix
-    ./gui-apps.nix
   ];
 }
