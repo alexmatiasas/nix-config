@@ -39,8 +39,6 @@
     firefox # Native browser, single source of truth (no flatpak duplicate).
     # mako
     # wttrbar # waybar weather backend; useless without waybar
-    catppuccin-gtk
-    papirus-icon-theme
     uwsm
     networkmanagerapplet
     # awww # wallpaper daemon; DMS manages wallpaper now
@@ -70,10 +68,6 @@
     ffmpegthumbnailer
     imagemagick
     chafa
-    # Single papirus folder provider as hygiene (nixpkgs#495362 showed
-    # duplicates cause icon-lookup storms). NOTE: dedup alone did NOT fix
-    # our slow flatpak startups; that case is still open, see TODO.md.
-    catppuccin-papirus-folders
     gum
     hyprcursor
     # No gnome-software on purpose: it drags PackageKit (background refresh

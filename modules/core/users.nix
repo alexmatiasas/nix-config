@@ -9,6 +9,10 @@
       "networkmanager"
     ];
     shell = pkgs.zsh;
+    packages = with pkgs; [
+      papirus-icon-theme
+      catppuccin-papirus-folders
+    ];
 
     # Declarative login password (required for graphical SDDM login;
     # SSH keys don't apply there). Rotate by editing this repo + rebuild.
