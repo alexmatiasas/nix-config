@@ -59,9 +59,11 @@
               # HM available on every host; users are defined per-profile
               # (workstation only, for now). Collisions with pre-existing
               # dotfiles back up instead of failing the switch.
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.backupFileExtension = "hm-backup";
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                backupFileExtension = "hm-backup";
+              };
             }
           ];
         };
