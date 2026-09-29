@@ -11,12 +11,9 @@
   hardware.graphics.enable = true;
   security.polkit.enable = true;
 
-  environment.sessionVariables = {
-    LIBGL_ALWAYS_SOFTWARE = "1";
-  };
-  systemd.user.extraConfig = ''
-    DefaultEnvironment="WAYLAND_DISPLAY=wayland-1" "XDG_CURRENT_DESKTOP=Hyprland" "XDG_SESSION_TYPE=wayland"
-  '';
+  # NOTE: no LIBGL_ALWAYS_SOFTWARE here on purpose: forcing software rendering
+  # globally would neuter real GPUs. VM hosts (vm-gui, laptop-stub) set it
+  # locally in their own default.nix instead.
 
   environment.systemPackages = with pkgs; [
     # Core & UI
@@ -39,10 +36,7 @@
     # The pre-DMS stack below is commented out as fallback: uncomment if DMS
     # breaks and you need a working bar/notifications/launcher immediately.
     # waybar
-    firefox
-    # Native browser: starts far faster than the Flatpak (cold-start
-    # cost + sandbox overhead measured in minutes on this VM).
-    # Flatpak Firefox stays in inventory as backup.
+    firefox # Native browser, single source of truth (no flatpak duplicate).
     # mako
     # wttrbar # waybar weather backend; useless without waybar
     catppuccin-gtk
@@ -76,14 +70,14 @@
     ffmpegthumbnailer
     imagemagick
     chafa
-    # ONLY ONE papirus folder provider! papirus-folders + catppuccin-
-    # papirus-folders together duplicate the icon tree with different
-    # overrides and make every flatpak take minutes to start (icon lookup
-    # storm, see nixpkgs#495362). Catppuccin variant wins.
+    # Single papirus folder provider as hygiene (nixpkgs#495362 showed
+    # duplicates cause icon-lookup storms). NOTE: dedup alone did NOT fix
+    # our slow flatpak startups; that case is still open, see TODO.md.
     catppuccin-papirus-folders
     gum
     hyprcursor
-    gnome-software
+    # No gnome-software on purpose: it drags PackageKit (background refresh
+    # load) and we manage software via nix + flatpak CLI, not a store GUI.
     hyprdim
     hyprdynamicmonitors
     hyprkeys

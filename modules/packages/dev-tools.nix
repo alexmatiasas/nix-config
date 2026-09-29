@@ -6,7 +6,7 @@
     neovim
     just
     shellcheck
-    gh
+    # gh lives in programs/shell.nix (needed on servers too); not duplicated here.
     sql-formatter
     sql-migrate
     lazygit
@@ -28,6 +28,6 @@
     vale
     yamllint
     sops
-    restic
+    # No restic: kopia won the backup decision (see services/backups.nix).
   ];
 }

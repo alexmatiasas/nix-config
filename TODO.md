@@ -27,10 +27,13 @@
 
 ## Workstation (`laptop` / `vm-gui` / `profiles/workstation.nix`)
 
-- [x] **Flatpak lento en VM (RESUELTO)**: eran los dos proveedores Papirus
-      duplicados (`papirus-folders` + `catppuccin-papirus-folders`) — storm
-      de lookups de iconos (nixpkgs#495362). Queda solo el variant Catppuccin.
-      Verificar con `time flatpak run` tras el switch.
+- [ ] **Flatpak lento en VM (ABIERTO)**: podar el duplicado Papirus NO lo
+      arregló. Evidencia acumulada: loop `readlinkat`+`newfstatat` en el
+      proceso `flatpak` sobre icon trees; portales sanos; env sano; recursos
+      sanos; nativo 0.5s. Siguiente: re-medir el storm tras la poda
+      (`strace -c`) para ver si cambió de forma; si idéntico, el driver está
+      en otro lado (candidatos: PackageKit ya removido, `gnome-software`
+      removido, queda revisar `tumbler`/thumbnailers y el FUSE portal).
 
 - [ ] **Triage `modules/programs/desktop-apps.nix`** (huérfano, nadie lo
       importa): clasificar por app → nixpkgs aarch64 OK / solo x86_64 /
