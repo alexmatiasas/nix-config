@@ -36,7 +36,9 @@
     # The pre-DMS stack below is commented out as fallback: uncomment if DMS
     # breaks and you need a working bar/notifications/launcher immediately.
     # waybar
-    # firefox # Native fallback browser (Flatpak Firefox also in inventory)
+    firefox # Native browser: starts far faster than the Flatpak (cold-start
+            # cost + sandbox overhead measured in minutes on this VM).
+            # Flatpak Firefox stays in inventory as backup.
     # mako
     # wttrbar # waybar weather backend; useless without waybar
     catppuccin-gtk
