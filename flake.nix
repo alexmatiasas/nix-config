@@ -5,6 +5,9 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     herdr.url = "github:herdrdev/herdr";
+    # Lockstep with nixpkgs 26.05: mismatched HM/nixpkgs releases break subtly.
+    home-manager.url = "github:nix-community/home-manager/release-26.05";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
     # Pinned stable (not main): declarative flatpak manager with
     # uninstall-on-remove (true single source of truth).
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.7.0";
@@ -25,6 +28,7 @@
       self,
       nixpkgs,
       herdr,
+      home-manager,
       nix-flatpak,
       dms,
       dmsGreeter,
@@ -44,6 +48,15 @@
           };
           modules = [
             ./hosts/${host}
+            home-manager.nixosModules.home-manager
+            {
+              # HM available on every host; users are defined per-profile
+              # (workstation only, for now). Collisions with pre-existing
+              # dotfiles back up instead of failing the switch.
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.backupFileExtension = "hm-backup";
+            }
           ];
         };
     in

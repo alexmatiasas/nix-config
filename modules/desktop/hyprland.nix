@@ -36,7 +36,7 @@
     # The pre-DMS stack below is commented out as fallback: uncomment if DMS
     # breaks and you need a working bar/notifications/launcher immediately.
     # waybar
-    firefox # Native browser, single source of truth (no flatpak duplicate).
+    # firefox # Native browser, single source of truth (no flatpak duplicate).
     # mako
     # wttrbar # waybar weather backend; useless without waybar
     uwsm
