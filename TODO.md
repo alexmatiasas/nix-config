@@ -27,11 +27,10 @@
 
 ## Workstation (`laptop` / `vm-gui` / `profiles/workstation.nix`)
 
-- [ ] **Flatpak lento en VM aarch64 (open)**: todo flatpak tarda 30-180s en
-      arrancar (5M `readlinkat` en loop, 92% del tiempo; nativo = 0.5s).
-      Evidencia en `/tmp/calc.strace`. Propietarias x86 (Zoom/Teams/Spotify/
-      Discord) no existen para ARM de todos modos -> web apps en Firefox
-      nativo. Revisitar en x86_64 si reproduce ahí.
+- [x] **Flatpak lento en VM (RESUELTO)**: eran los dos proveedores Papirus
+      duplicados (`papirus-folders` + `catppuccin-papirus-folders`) — storm
+      de lookups de iconos (nixpkgs#495362). Queda solo el variant Catppuccin.
+      Verificar con `time flatpak run` tras el switch.
 
 - [ ] **Triage `modules/programs/desktop-apps.nix`** (huérfano, nadie lo
       importa): clasificar por app → nixpkgs aarch64 OK / solo x86_64 /

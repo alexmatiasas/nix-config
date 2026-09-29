@@ -76,7 +76,10 @@
     ffmpegthumbnailer
     imagemagick
     chafa
-    papirus-folders
+    # ONLY ONE papirus folder provider! papirus-folders + catppuccin-
+    # papirus-folders together duplicate the icon tree with different
+    # overrides and make every flatpak take minutes to start (icon lookup
+    # storm, see nixpkgs#495362). Catppuccin variant wins.
     catppuccin-papirus-folders
     gum
     hyprcursor
