@@ -14,6 +14,10 @@
 
 {
   home-manager.users.alexmatias = {
+    # Must match the home-manager input (release-26.05). Never change after
+    # first switch: it gates HM's own migration behavior, not your dotfiles.
+    home.stateVersion = "26.05";
+
     xdg.configFile."hypr".source =
       config.lib.file.mkOutOfStoreSymlink "${config.users.users.alexmatias.home}/.config/nix-config/modules/home/hypr";
   };
