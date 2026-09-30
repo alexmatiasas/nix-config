@@ -21,6 +21,12 @@ output_path = '/home/alexmatias/.config/kitty/colors-matugen.conf'
 post_hook = 'pkill -SIGUSR1 kitty'
 
 # btop theme. Select theme "matugen" in btop once generated.
+# post_hook sends SIGUSR2 so RUNNING btop instances hot-reload the config
+# (needs btop >= 1.4.7; `|| true` so matugen doesn't error when btop
+# isn't open). If the theme file itself doesn't refresh, press CTRL+R
+# inside btop or restart it — theme hot-reload is still an open upstream
+# issue (aristocratos/btop#1574).
 [templates.btop]
 input_path = '/home/alexmatias/.config/matugen/templates/btop.theme'
 output_path = '/home/alexmatias/.config/btop/themes/matugen.theme'
+post_hook = 'pkill -USR2 btop || true'
