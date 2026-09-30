@@ -1,0 +1,26 @@
+[config]
+
+# Hyprland native colors ($vars). Consumed by plain hyprland.conf sourcing.
+[templates.hyprland]
+input_path = '/home/alexmatias/.config/matugen/templates/hyprland-colors.conf'
+output_path = '/home/alexmatias/.config/hypr/colors.conf'
+post_hook = 'hyprctl reload'
+
+# Hyprland lua colors (lua vars). Required by hyprland.lua `require("colors")`
+# and used for window borders in conf/windows/default.lua.
+[templates.hyprland-lua]
+input_path = '/home/alexmatias/.config/matugen/templates/hyprland-colors.lua'
+output_path = '/home/alexmatias/.config/hypr/colors.lua'
+post_hook = 'hyprctl reload'
+
+# Kitty colors. Wired up once kitty.conf is HM-managed (needs
+# `include colors-matugen.conf`); file is still generated meanwhile.
+[templates.kitty]
+input_path = '/home/alexmatias/.config/matugen/templates/kitty-colors.conf'
+output_path = '/home/alexmatias/.config/kitty/colors-matugen.conf'
+post_hook = 'pkill -SIGUSR1 kitty'
+
+# btop theme. Select theme "matugen" in btop once generated.
+[templates.btop]
+input_path = '/home/alexmatias/.config/matugen/templates/btop.theme'
+output_path = '/home/alexmatias/.config/btop/themes/matugen.theme'

@@ -26,5 +26,13 @@ in
 
     xdg.configFile."hypr".source =
       config.lib.file.mkOutOfStoreSymlink "${home}/.config/nix-config/modules/home/hypr";
+
+    # Matugen inputs (config.toml + templates). Out-of-store so templates
+    # can be iterated without rebuild. DMS runs matugen on wallpaper/theme
+    # changes and executes these alongside its built-in templates.
+    # NOTE: DMS docs require template entries under [config] with ABSOLUTE
+    # paths — see modules/home/matugen/config.toml. Do not use ~/ here.
+    xdg.configFile."matugen".source =
+      config.lib.file.mkOutOfStoreSymlink "${home}/.config/nix-config/modules/home/matugen";
   };
 }
