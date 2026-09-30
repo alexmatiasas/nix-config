@@ -13,5 +13,6 @@ _:
     ../modules/services/backups.nix
     ../modules/development/default.nix
     ../modules/desktop/default.nix
+    ../modules/home/default.nix
   ];
 }
