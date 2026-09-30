@@ -8,8 +8,8 @@
 -- ref: https://wiki.hypr.land/Configuring/Basics/Monitors/
 
 hl.monitor({
-    output = "",
+    output = "", -- hyprctl monitors all
     mode = "preferred",
     position = "auto",
-    scale = 1
+    scale = 1,
 })
