@@ -2,6 +2,7 @@
 -- General window decoration
 -- name: "No Rounding"
 -- -----------------------------------------------------
+-- ref: https://wiki.hypr.land/configuring/core/config-options/#decoration
 
 hl.config({
     decoration = {
@@ -19,13 +20,13 @@ hl.config({
         },
 
         blur = {
-            enabled   = true,
-            size      = 4,
-            passes    = 4,
-            new_optimizations = on,
-            ignore_opacity = true,
+            enabled = true,
+            size = 4,
+            passes = 4,
+            -- new_optimizations = true, -- true by default
+            -- ignore_opacity = true, -- true by default
             xray = true,
-            vibrancy  = 0.1696,
+            vibrancy = 0.1696,
         },
     },
 })
