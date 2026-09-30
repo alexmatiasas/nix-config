@@ -6,7 +6,7 @@
 hl.config({
 	input = {
 		accel_profile = "adaptive", -- "adaptive", "flat", "custom"
-		kb_layout = "latam",
+		kb_layout = "latam, us, jp, de",
 		kb_variant = "",
 		kb_model = "",
 		kb_options = "grp:alt_shift_toggle",
