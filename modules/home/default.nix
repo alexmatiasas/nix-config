@@ -12,13 +12,19 @@
 # pipeline is verified (see colors.lua thread).
 { config, ... }:
 
+let
+  # Home dir from the NixOS side (outer `config`); the inner per-user
+  # module below has its own `config` where config.lib.file.* (HM lib) lives.
+  home = config.users.users.alexmatias.home;
+in
+
 {
-  home-manager.users.alexmatias = {
+  home-manager.users.alexmatias = { config, ... }: {
     # Must match the home-manager input (release-26.05). Never change after
     # first switch: it gates HM's own migration behavior, not your dotfiles.
     home.stateVersion = "26.05";
 
     xdg.configFile."hypr".source =
-      config.lib.file.mkOutOfStoreSymlink "${config.users.users.alexmatias.home}/.config/nix-config/modules/home/hypr";
+      config.lib.file.mkOutOfStoreSymlink "${home}/.config/nix-config/modules/home/hypr";
   };
 }
