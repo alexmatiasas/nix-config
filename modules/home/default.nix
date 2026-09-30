@@ -34,5 +34,13 @@ in
     # paths — see modules/home/matugen/config.toml. Do not use ~/ here.
     xdg.configFile."matugen".source =
       config.lib.file.mkOutOfStoreSymlink "${home}/.config/nix-config/modules/home/matugen";
+
+    # btop config (color_theme = "matugen"). Whole dir out-of-store like
+    # hypr: matugen must write themes/matugen.theme next to btop.conf.
+    # NOTE: btop rewrites btop.conf on exit (save_config_on_exit) and
+    # matugen rewrites themes/ — both dirty git status; gitignore covers
+    # the generated theme, btop.conf noise is the cost of live theming.
+    xdg.configFile."btop".source =
+      config.lib.file.mkOutOfStoreSymlink "${home}/.config/nix-config/modules/home/btop";
   };
 }
