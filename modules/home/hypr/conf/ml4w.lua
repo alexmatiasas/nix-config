@@ -206,8 +206,8 @@ hl.env("CLUTTER_BACKEND", "wayland")
 -- Mozilla
 hl.env("MOZ_ENABLE_WAYLAND", "1")
 
--- Set the cursor size for xcursor
-hl.env("XCURSOR_THEME", "Bibata-Modern-Ice")
+-- Set the cursor size for xcursor (capitaine-cursors ships with the system)
+hl.env("XCURSOR_THEME", "capitaine-cursors")
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
 

@@ -62,6 +62,7 @@
     libwebp
     librsvg
     brightnessctl
+    playerctl # media keys (see hypr keybindings) + DMS media widget backend
     thunar
     thunar-archive-plugin
     tumbler
