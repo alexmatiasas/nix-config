@@ -1,5 +1,9 @@
 syntax = "Luau"
 indent_type = "Spaces"
 indent_width = 4
-column_width = 80
+# Wide enough to keep single-line hl.bind() calls intact: DMS's keybind
+# cheatsheet parser only reads single-line invocations, and StyLua would
+# otherwise re-expand them past the width on every format-on-save.
+# (Longest bind is ~155 cols; 180 gives margin without affecting the rest.)
+column_width = 180
 quote_style = "AutoPreferDouble"
