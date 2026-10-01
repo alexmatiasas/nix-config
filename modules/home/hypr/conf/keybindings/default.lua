@@ -708,14 +708,6 @@ hl.bind(
     { description = "Move window to previous workspace" }
 )
 
--- === Touchpad Gestures ===
-hl.gesture({
-    fingers = 3,
-    direction = "horizontal",
-    action = "workspace",
-    description = "Switch workspaces with 3-finger horizontal swipe",
-})
-
 -- === Numbered Workspaces ===
 hl.bind(
     mainMod .. " + 1",
