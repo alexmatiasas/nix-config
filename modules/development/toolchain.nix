@@ -19,4 +19,9 @@
   # language servers, TabNine (cmp-tabnine install.sh), etc. If any tool
   # later complains about a missing .so, extend programs.nix-ld.libraries.
   programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    # Mason's marksman is a .NET app needing system ICU (dotnet host refuses
+    # to start without libicuuc/libicui18n — see nvim lsp.log).
+    icu
+  ];
 }

@@ -29,5 +29,10 @@
     yamllint
     sops
     # No restic: kopia won the backup decision (see services/backups.nix).
+    # Editor LSP runtimes (Mason downloads the servers, Nix provides what
+    # Mason can't): nixd binary itself, JDK for Mason's ltex-ls (Java bytecode
+    # is portable, it just needs a runtime in PATH).
+    nixd
+    jdk
   ];
 }
