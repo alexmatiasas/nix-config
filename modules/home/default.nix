@@ -19,6 +19,10 @@ let
 in
 
 {
+  imports = [
+    ./nvim.nix
+  ];
+
   home-manager.users.alexmatias = { config, ... }: {
     # Must match the home-manager input (release-26.05). Never change after
     # first switch: it gates HM's own migration behavior, not your dotfiles.
