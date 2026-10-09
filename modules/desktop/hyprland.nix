@@ -80,6 +80,7 @@
 
     # Terminal
     kitty
+    ghostty
   ];
 
   # FALLBACK display manager (SDDM + qylock theme): commented out while
