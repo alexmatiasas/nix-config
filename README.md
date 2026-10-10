@@ -45,12 +45,13 @@ Rules of thumb:
   Each entry declares `nix` and/or `flatpak+arches`; Nix generates both installs.
   One backend per app per arch, never duplicates. Triage backlog (commented)
   promotes one app at a time after `dry-build` on the target arch.
-- **Home files are read-only by design**: `~/.config/*` are symlinks into
-  `/nix/store` (except `hypr/`, `matugen/`, `btop/`, `nvim/`, which are
-  writable out-of-store symlinks because something must write into them at
-  runtime). Edit sources in `modules/home/`, then `switch`. For fast
-  iteration, temporarily replace a symlink with a writable copy, experiment,
-  and copy back before switching.
+- **Home files are live repo checkouts, by design**: everything under
+  `modules/home/` deploys as out-of-store symlinks into `~/.config`, so
+  editing there applies instantly where the app hot-reloads (ghostty,
+  Hyprland via `hyprctl reload`) with no switch. Workflow: experiment live,
+  `git diff` to review, commit keepers, `switch` to seal. Rollback split:
+  system via Nix generations, home via git history (`git checkout`). Never
+  `git clean -fdx` this repo — it would delete live configs.
 
 ## Daily workflow
 

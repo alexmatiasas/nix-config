@@ -4,11 +4,18 @@
 # (macos-window-buttons, cmd+ keybinds) are inert on Linux.
 # Binary comes from nixpkgs (see hyprland.nix); kitty stays installed
 # as fallback terminal.
+#
+# Out-of-store symlink: ghostty hot-reloads its config on save, so editing
+# modules/home/ghostty/* applies instantly with no switch. Review with
+# `git diff`, commit keepers.
+{ config, ... }:
+
+let
+  home = config.users.users.alexmatias.home;
+in
 {
-  home-manager.users.alexmatias = {
-    xdg.configFile."ghostty" = {
-      source = ./ghostty;
-      recursive = true;
-    };
+  home-manager.users.alexmatias = { config, ... }: {
+    xdg.configFile."ghostty".source =
+      config.lib.file.mkOutOfStoreSymlink "${home}/.config/nix-config/modules/home/ghostty";
   };
 }
