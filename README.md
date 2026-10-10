@@ -41,11 +41,16 @@ Rules of thumb:
 
 - **Hardware** (bootloader, swap, filesystems, hostname) goes in `hosts/`, never in `core/`.
 - **Role** (server vs workstation) goes in `profiles/`, which only *import* domains.
-- `modules/programs/desktop-apps.nix` is currently **orphaned on purpose**: several
-  apps don't build on `aarch64` (e.g. Zettlr). See TODO.md for the triage plan
-  (nixpkgs vs Flatpak per app).
-- Dotfiles rule: if a change lives in chezmoi (aliases, waybar style, hyprland
-  keybinds), do **NOT** `nixos-rebuild` for it — just `chezmoi apply`.
+- **Apps** live in exactly one place: `modules/programs/app-inventory.nix`.
+  Each entry declares `nix` and/or `flatpak+arches`; Nix generates both installs.
+  One backend per app per arch, never duplicates. Triage backlog (commented)
+  promotes one app at a time after `dry-build` on the target arch.
+- **Home files are read-only by design**: `~/.config/*` are symlinks into
+  `/nix/store` (except `hypr/`, `matugen/`, `btop/`, `nvim/`, which are
+  writable out-of-store symlinks because something must write into them at
+  runtime). Edit sources in `modules/home/`, then `switch`. For fast
+  iteration, temporarily replace a symlink with a writable copy, experiment,
+  and copy back before switching.
 
 ## Daily workflow
 
