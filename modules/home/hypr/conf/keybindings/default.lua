@@ -5,11 +5,12 @@ local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 -- binaries come from Nix systemPackages — see nix-config)
 -- === Application Launchers ===
 hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd("ghostty"), { description = "Open the terminal" })
+-- hl.bind("ALT + space", hl.dsp.exec_cmd("kitten quick_access_terminal"), { description = "Open quick_access_terminal kitty" })
 
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("flatpak run org.mozilla.firefox"), { description = "Open the filemanager" })
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd("thunar"), { description = "Open the filemanager" })
 hl.bind(mainMod .. " + space", hl.dsp.exec_cmd("dms ipc call spotlight toggle"), { description = "Toggle spotlight" })
-hl.bind("ALT + space", hl.dsp.exec_cmd("dms ipc call spotlight-bar toggle"), { description = "Toggle spotlight bar" })
+-- hl.bind("ALT + space", hl.dsp.exec_cmd("dms ipc call spotlight-bar toggle"), { description = "Toggle spotlight bar" })
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("dms ipc call clipboard toggle"), { description = "Toggle clipboard history" })
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("dms ipc call processlist focusOrToggle"), { description = "Focus or toggle process list" })
 hl.bind(mainMod .. " + comma", hl.dsp.exec_cmd("dms ipc call settings focusOrToggle"), { description = "Focus or toggle settings" })
