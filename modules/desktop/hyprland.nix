@@ -79,6 +79,9 @@
     hyprls
 
     # Terminal
+    # Ghostty is primary (same muscle memory as macOS); kitty stays as
+    # fallback — costs nothing, saves the session if ghostty breaks.
+    ghostty
     kitty
     ghostty
   ];

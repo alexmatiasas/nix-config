@@ -1,0 +1,5 @@
+# Solo cargado en macOS (es opcional con el ? en config.ghostty)
+macos-titlebar-style = tabs
+macos-option-as-alt = left    # Option izquierdo como Meta (útil en zsh)
+macos-window-buttons = hidden
+

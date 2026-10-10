@@ -1,0 +1,21 @@
+# ref: https://ghostty.org/docs/config/reference
+# Entrada principal — carga módulos
+# This will overload all configs in this file
+config-file = appearance/background.ghostty
+config-file = appearance/fonts.ghostty
+config-file = appearance/language.ghostty
+config-file = appearance/cursor.ghostty
+config-file = keybinds.ghostty
+config-file = ?platform-macos.ghostty   # ignorado en Linux
+
+# Shell
+shell-integration = detect
+shell-integration-features = sudo
+
+# Quick Terminal
+quick-terminal-position = top
+quick-terminal-screen = main
+quick-terminal-animation-duration = 0.15
+quick-terminal-autohide = true
+quick-terminal-size = 40%
+

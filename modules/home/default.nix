@@ -21,6 +21,9 @@ in
 {
   imports = [
     ./nvim.nix
+    ./shell.nix
+    ./ghostty.nix
+    ./yazi.nix
   ];
 
   home-manager.users.alexmatias = { config, ... }: {

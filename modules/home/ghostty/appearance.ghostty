@@ -1,0 +1,28 @@
+# Colores — tema OneDark
+background = 282c34
+foreground = abb2bf
+
+# Transparencia y blur
+background-opacity = 0.5
+background-blur-radius = 20
+
+# Ventana
+window-padding-x = 12
+window-padding-y = 10
+window-padding-balance = true
+
+# Cursor
+cursor-style = bar
+cursor-style-blink = true
+
+# Unfocused splits más oscuras
+unfocused-split-opacity = 0.5
+
+# Font
+font-family = FiraCode Nerd Font
+font-size = 24
+
+macos-window-buttons = hidden
+
+# Theme
+theme = Github Dark

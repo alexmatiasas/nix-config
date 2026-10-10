@@ -1,0 +1,76 @@
+# .zshrc — NixOS/Linux static render (chezmoi dot_zshrc.tmpl resolved).
+# Source: chezmoi dot_zshrc.tmpl (darwin blocks dropped). Re-render on change.
+
+# --- Env (exports estáticos, sin evals)
+source ~/.zsh/00-env.zsh
+
+# --- zinit + plugins (reemplaza Oh My Zsh)
+source ~/.zsh/10-zinit.zsh
+
+# --- Completions: fpath después de zinit para que blockf no interfiera
+# Agregar a fpath solo si no está ya presente
+_add_fpath() { [[ -d "$1" && ! " ${fpath[*]} " =~ " $1 " ]] && fpath=("$1" $fpath); }
+_add_fpath ~/.zsh/completions
+_add_fpath ~/.local/share/zsh/site-functions
+_add_fpath ~/.docker/completions
+unfunction _add_fpath
+
+autoload -Uz compinit
+# Regenerar dump si el dump no existe o si algún completion es más nuevo
+if [[ ! -f ~/.zcompdump ]] || [[ ~/.zsh/completions -nt ~/.zcompdump ]]; then
+	compinit -u
+else
+	compinit -uC
+fi
+
+# --- Aliases y funciones
+source ~/.zsh/20-aliases.zsh
+source ~/.zsh/30-functions.zsh
+
+# --- Toolchains
+source ~/.zsh/40-python.zsh
+source ~/.zsh/41-prek.zsh
+source ~/.zsh/42-docker.zsh
+source ~/.zsh/43-atuin.zsh
+source ~/.zsh/44-fnm.zsh
+source ~/.zsh/45-zoxide.zsh
+
+# --- Completion style
+source ~/.zsh/60-zsh-suggestions-style.zsh
+
+# --- Prompt
+source ~/.zsh/90-prompt.zsh
+
+# --- Misc
+zstyle ':completion:*' menu select
+autoload -Uz +X bashcompinit && bashcompinit
+
+# Generated for envman. Do not edit.
+[[ -s "$HOME/.config/envman/load.sh" ]] && source "$HOME/.config/envman/load.sh"
+
+# SPM wrapper
+[[ -f "${HOME}/projects/shell/spm/lib/spm.sh" ]] && source "${HOME}/projects/shell/spm/lib/spm.sh"
+
+fpath+=~/.zfunc; autoload -Uz compinit; compinit
+export EDITOR="nvim"
+export VISUAL="nvim"
+# export EDITOR="code --wait"
+
+PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
+
+# bun completions
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# pnpm (linux path; darwin uses ~/Library/pnpm — see chezmoi source)
+export PNPM_HOME="$HOME/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
+# pnpm end
+
+export PATH=$HOME/.rill:$PATH

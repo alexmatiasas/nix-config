@@ -1,0 +1,28 @@
+# ref: run `ghostty +list-themes`
+# Theme
+theme = Starlight
+
+# This overrides the theme's colors, so you can customize them
+# Colores — tema OneDark
+# ref: https://ghostty.org/docs/config/reference#background
+# background = 282c34
+# foreground = abb2bf
+
+# Transparencia y blur
+background-opacity = 0.5
+background-blur = true
+background-blur-radius = 20
+
+# Background images
+# background-image = ~/Pictures/wallpapers/karsten-wurth-7BjhtdogU3A-unsplash.jpg
+# background-image-opacity = 0.5
+# background-image-fit = cover
+
+# Ventana
+window-padding-x = 12
+window-padding-y = 10
+window-padding-balance = true
+
+
+# Unfocused splits más oscuras
+unfocused-split-opacity = 0.5

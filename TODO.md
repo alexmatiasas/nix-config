@@ -42,6 +42,9 @@
       (waybar/mako/rofi/dock/hyprlock) comentado como fallback en
       `hyprland.nix`. Walker queda instalado (dev-tools) como launcher
       agnóstico al DE.
+- [x] HM fase 1 (shell+zsh+gosthy+yazi+nvim): `shell.nix` (zshrc/zsh/tmux/fzf/
+      starship estáticos), `ghostty.nix` + binario, `yazi.nix` (flavor nord),
+      `nvim.nix`. Keybind terminal -> ghostty. Validar en vm-gui tras switch.
 - [ ] Probar `dms-greeter` en `vm-gui` (reemplaza SDDM; si falla, volver a
       SDDM+qylock descomentando 2 bloques).
 - [ ] Trial niri vs Hyprland (una semana de uso real, elegir sesión al login).

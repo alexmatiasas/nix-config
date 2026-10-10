@@ -1,0 +1,4 @@
+# ref: https://ghostty.org/docs/config/reference#font-family
+# Fonts
+font-family = FiraCode Nerd Font Mono
+font-size = 18
