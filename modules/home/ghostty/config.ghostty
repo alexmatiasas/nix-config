@@ -17,6 +17,6 @@ shell-integration-features = sudo
 quick-terminal-position = top
 quick-terminal-screen = main
 quick-terminal-animation-duration = 0.15
-quick-terminal-autohide = true
+gtk-quick-terminal-layer = overlay
 quick-terminal-size = 40%
 
