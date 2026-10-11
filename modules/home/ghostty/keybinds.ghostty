@@ -1,6 +1,6 @@
 # ── Quick Terminal ────────────────────────────────────────────
 # Activa desde cualquier app (requiere permisos Accesibilidad)
-keybind = global:option+space=toggle_quick_terminal
+keybind = global:alt+space=toggle_quick_terminal
 
 # ── Splits ───────────────────────────────────────────────────
 keybind = cmd+d=new_split:right
