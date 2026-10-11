@@ -1,0 +1,5 @@
+# Linux-only keybinds (mirrors platform-macos.ghostty).
+# NOTE: `option`/`cmd` modifiers do not exist on Linux — a `global:option+…`
+# trigger is silently ignored, which is why the quick terminal never fired.
+# Use alt/super here. Included from config.ghostty like the macOS file.
+keybind = global:alt+space=toggle_quick_terminal

@@ -145,6 +145,7 @@ table; the ESP flag tells UEFI firmware where the bootloader lives; labels
 | `permittedInsecurePackages` blocks build (electron, ventoy) | known CVE, version-pinned | add exact version to `nixpkgs.config.permittedInsecurePackages` (re-check on every `flake update`) |
 | `shell is set to zsh, but programs.zsh.enable is not true` | profile imports users without `programs/shell.nix` | import `shell.nix` in that profile |
 | `undefined variable 'network-manager-applet'` | wrong attr name (dashes); real one is `networkmanagerapplet` | use the nixpkgs attribute, not the binary name |
+| `flake check` green but `dry-build` fails on a package name | `check` evaluates lazily: package lists (`systemPackages`, `extraPortals`) aren't forced | a typo like `xdg-dzesktop-portal-hyprland` only explodes at build time — always `dry-build` after touching package lists |
 | `unexpected '//'` | `//` comments are illegal in Nix (use `#`) | fix the comment |
 | `services.X` nested inside `services = { }` | double nesting | hoist to top-level `services.X` |
 | `systemd.logind does not exist` | wrong path | `services.logind.settings…` |
