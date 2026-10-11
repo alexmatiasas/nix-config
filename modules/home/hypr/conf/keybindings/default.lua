@@ -5,6 +5,7 @@ local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 -- binaries come from Nix systemPackages — see nix-config)
 -- === Application Launchers ===
 hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd("ghostty"), { description = "Open the terminal" })
+hl.bind(mainMod .. " + grave", hl.dsp.exec_cmd("ghostty +toggle-quick-terminal"), { description = "Toggle quick terminal (global, via Hyprland bind — the global: portal path never registers here)" })
 -- hl.bind("ALT + space", hl.dsp.exec_cmd("kitten quick_access_terminal"), { description = "Open quick_access_terminal kitty" })
 
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("flatpak run org.mozilla.firefox"), { description = "Open the filemanager" })
